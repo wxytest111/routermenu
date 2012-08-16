@@ -9,6 +9,7 @@ java -jar yuicompressor-2.4.6.jar js/pc.js -o js/pc_o.js --charset utf-8
 java -jar yuicompressor-2.4.6.jar css/r.css -o css/r_o.css --charset utf-8
 echo '>> compress end!'
 
+
 echo '2. git commit :'
 git add .
 git commit -m ' commit *_o to repository'
