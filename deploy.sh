@@ -11,9 +11,9 @@ echo '>> compress end!'
 
 echo '2. git commit :'
 git status
-git pull --rebase
 git add .
 git commit -m ' commit *_o to repository'
+git pull --rebase
 git push
 echo '>> git commit end!'
 
