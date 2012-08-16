@@ -10,13 +10,15 @@ java -jar yuicompressor-2.4.6.jar css/r.css -o css/r_o.css --charset utf-8
 echo '>> compress end!'
 
 echo '2. git commit :'
-git pull
+git status
+git pull --rebase
 git add .
 git commit -m ' commit *_o to repository'
 git push
 echo '>> git commit end!'
 
 echo '3. export code to delivercode:'
+rm -fr ~/delivercode/routermenu
 git clone git@github.com:wxytest111/routermenu.git ~/delivercode/routermenu
 echo '>> export code succeed!'
 
