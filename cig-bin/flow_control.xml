@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-control-list>
+<port>
+<id>1/1</id>
+ <status>Enable</status>
+</port>
+<port>
+<id>1/2</id>
+ <status>Disable</status>
+</port>
+</flow-control-list>
+

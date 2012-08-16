@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="xinyu" />
+	<title>Login</title>
+<link rel="stylesheet" href="../css/proxy.css" type="text/css" />
+<style type="text/css">
+.login_cnt{
+	width:750px;
+	height:400px;
+	margin:auto;
+	text-align:center;
+}
+.login_pic{
+	margin:10px auto;
+	height:340px;
+	width:397px;
+	background:url('../images/login.png') no-repeat center top;
+	position:relative;
+}
+
+</style>
+</head>
+<body>
+	<div class="login_cnt"> 
+		<div style="height:30%;"></div>
+		<div class="login_pic">
+		<input type="text" value="" id="name" style="position:absolute;top:110px;left:140px;line-height:22px;height:22px;width:200px;"/>
+		
+		<input type="password" value="" id="pwd" style="position:absolute;top:143px;left:140px;line-height:22px;height:22px;width:200px;"/>
+		
+		<span id="login_btn" style="display:inline-block;position:absolute;top:202px;left:176px;width:60px;height:24px;border:1px solid black;cursor:pointer;"></span>
+		</div>
+	</div>
+<input type='hidden' id="error" value="Please input valid username and password!."/>
+<input type='hidden' id="loginerror" value="Login failure!."/>
+</body>
+<script type="text/javascript" src="../js/start.js"></script>
+<script type="text/javascript">
+//此处中文可以知道编码是否正确
+function commitToLogin(){
+	if($('#name').val()==''||$('#pwd').val()==''){
+		alert($('#error').val());
+		return;
+	}else{
+		var url=RouterConfig.login+decodeURIComponent($.param({'dispatch':'login',user:$('#name').val(),passwd:$('#pwd').val(),r:Math.random()}));
+		$.ajax({
+			url:url,
+			type:'GET',
+			dataType:'xml'
+		}).done(function(res){
+			var status=$.trim($(res).find('login-result').text());
+			if(status=='success'){
+				var privilege=$.trim($(res).find('privilege').text());
+				var portnum = $.trim($(res).find('portnum').text());
+				var user=$.trim($('#name').val());
+				$.cookie('router_user',user,{expires:0.1});
+				$.cookie('router_portnum',portnum,{expires:0.1});
+				$.cookie('router_privilege',privilege.toLowerCase(),{expires:0.1});
+				window.location.href=$.url().attr('base')+"/html/frame.html";//?privilege="+privilege+"&portnum="+portnum+"&username="+$('#name').val();
+			}else{
+				alert($('#loginerror').val());
+				return;
+			}
+		});
+	}
+}
+function loginFunc(){
+	trace($.url().attr('base'));
+	$('#login_btn').click(function(){
+		commitToLogin();
+	});
+	$('#name').keydown(function(event){
+		if(event.which==13){
+			event.preventDefault();
+			commitToLogin();
+		}
+	});
+	$('#pwd').keydown(function(event){
+		if (event.which == 13) {
+		    event.preventDefault();
+		    commitToLogin();
+		 }
+	});	
+}
+
+RouterStart(1,function() {
+	loginFunc();
+});
+		
+
+</script>
+</html>

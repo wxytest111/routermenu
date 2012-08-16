@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="xinyu" />
+	<title>WebSmart Switch</title>
+<link rel="stylesheet" href="../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<div class="entity wd1276">
+	<span class="logo"></span>
+	<span class="routerbanner"></span>
+	<span class="save"></span>
+	<span class="logout"></span>
+	</div>
+</div>
+<div id="nav" class="pdleft20">
+</div>
+<div id="nav2" class="pdleft20">
+</div>
+<div class="c_body">
+	<div id="navcontainer">
+	</div>
+	<div id="content"> 
+		<iframe id="cntIframe" src="system/system_information.html" class="hg450 wd1046" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+	</div>
+</div>
+<div id="btnarea" class="btnarea wd1046">
+
+</div>
+<div id="footter">
+	<div class="content">&nbsp;</div>
+</div>
+<input type='hidden' id="wait_tips" value="This may take a few minutes please wait."/>
+</body>
+<script type="text/javascript" src="../js/start.js"></script>
+<script type="text/javascript">
+//此处中文可以知道编码是否争取
+
+RouterStart(1,function() {
+	trace("RouterConfig.user="+RouterConfig.user);
+	trace("RouterConfig.privilege="+RouterConfig.privilege);
+	checkLoginStatus();
+		$('#header .logout').click(function(){
+			var url=RouterConfig.logout+'dispatch=logout&user='+RouterConfig.user+'&r='+Math.random();
+			//$.ajax({url:url}).done(function(res){
+			//	manageResult(res);
+			//});
+			new Image().src=url;
+			grepResult('<result><ret-code>relogin</ret-code></result>');
+			
+		});
+		$('#header .save').click(function(){
+			var url=RouterConfig.save+'dispatch=save configuration'+'&r='+Math.random();
+			$.ajax({url:url}).done(function(res){
+				grepResult(res);
+				
+				top.popUp({height:120,width:260,content:$(res).find('msg').text(),icon:'01',type:'alert'});
+			});
+		});
+		var orgData=RouterConfig.orgData;
+		var Rpm = {
+			currentL1 : {
+				id : '1',
+				haschild : 1
+			},
+			currentL2 : {
+				id : '1',
+				haschild : 1
+			},
+			currentL3 : {
+				id : '1',
+				haschild : 1
+			},
+			currentL4 : {
+				id : '1',
+				haschild : 0
+			}
+		};
+		function generateMenu(callback) {
+			var countL1 = 0;
+			var nav = $('#nav');
+			var nav2 = $('#nav2');
+			var nav3 = $('#navcontainer');
+			var navhtml = '<ul class="wd1046">';
+			var nav2html = '';
+			var nav3html = '';
+			for ( var k in orgData) {
+				var countL2 = 0;
+				countL1++;
+				navhtml += '<li><a href="javascript:;" _subid="' + countL1
+						+ '" class="' + (countL1 == 1 ? 'current' : '') + '">' + k
+						+ '</a></li>';
+				nav2html += '<ul id="nav2_' + countL1 + '" class="wd1276 '
+						+ (countL1 == 1 ? '' : 'hide') + '">';
+				for ( var t in orgData[k]) {
+					countL2++;
+					nav2html += '<li><a href="javascript:void(0);" _subid="' + countL2
+							+ '" class="'
+							+ ((countL1 == 1 && countL2 == 1) ? 'current' : '')
+							+ '" _haschild="'
+							+ (typeof orgData[k][t] == 'object' ? 1 : 0) 
+							+ '"  _href="'
+							+(typeof orgData[k][t] == 'string' ? orgData[k][t]: '') +'">' + t
+							+ '</a></li>';
+					if (typeof orgData[k][t] == 'object') {
+						var countL3 = 0;
+						nav3html += '<ul id="nav3_' + countL1 + '_' + countL2
+								+ '" class="'
+								+ ((countL1 == 1 && countL2 == 1) ? '' : 'hide') + '">';
+						// <li><a href="javascript:void(0);" _haschild='0'
+						// _href="system_information.html">System Infomation</a></li>
+						for ( var m in orgData[k][t]) {
+							countL3++;
+							nav3html += '<li><a href="javascript:void(0);"  _subid="'
+									+ countL3+ '" _haschild="'
+									+ (typeof orgData[k][t][m] == 'object' ? 1 : 0)
+									+ '" _href="'
+									+ (typeof orgData[k][t][m] == 'string' ? orgData[k][t][m]
+											: '') + '"'+ ' class="' + (countL3 == 1 ? 'current' : '') + '">' + m + '</a>';
+
+							if (typeof orgData[k][t][m] == 'object') {
+								var countL4 = 0;
+								var nav4html = '';
+								nav4html += '<ul class="hide">';
+								for ( var n in orgData[k][t][m]) {
+									countL4++;
+									nav4html += '<li><a href="javascript:void(0);" _href="'
+											+ orgData[k][t][m][n]
+											+ '" _subid="'
+											+ countL4 + '">' + n + '</a></li>'
+								}
+								nav4html += '</ul>';
+								nav3html += nav4html;
+							}
+							nav3html += '</li>';
+						}
+						nav3html += '</ul>';
+					} else {
+
+					}
+
+				}
+				nav2html += '</ul>';
+			}
+			navhtml += '</ul>';
+			nav.html(navhtml);
+			nav2.html(nav2html);
+			nav3.html(nav3html);
+			if (callback)
+				callback();
+		}
+		generateMenu(setEvent);
+
+		function setEvent() {
+			var navs = $('#nav a');
+			var nav2list = $('#nav2 ul');
+			var nav2s = $('#nav2 a');
+			var nav3list = $('#navcontainer ul');
+			var tnav3listanchor =$('#navcontainer ul li a');
+			var nav3listanchor=[];
+			var nav4listanchor = $('#navcontainer ul li ul li a');
+			
+			// Level controll Leve2
+			$.each(navs, function(){
+				$(this).click(function(){
+					_subid=$(this).attr('_subid');
+					if (Rpm.currentL1.id == _subid)
+						return;
+					$.each(navs, function() {
+						$(this).removeClass('current');
+					});
+					$(this).addClass('current');
+					$.each(nav2list, function() {
+						$(this).hide();
+					});
+					$(nav2list[(_subid - 1)]).show();
+					Rpm.currentL1.id = _subid;
+					var subnav2list = $('#nav2_' + _subid+' a');
+					if (subnav2list.length > 0) {
+						$.each(subnav2list, function() {
+							$(this).removeClass('current');
+						});
+						$(subnav2list[0]).addClass('current');
+						
+						var _subnav2id = $(subnav2list[0]).attr('_subid');
+						trace('_subid='+_subnav2id)
+						$.each(nav3list, function() {
+								$(this).hide();
+							});
+						if ($(subnav2list[0]).attr('_haschild') == '1') {
+							
+							var currentNav3 =$('#nav3_' + _subid + '_' + _subnav2id);
+							$(currentNav3).show();
+							Rpm.currentL2.id=1;
+							showLeap();
+						} else {
+							showPage(subnav2list[0]);
+						}
+					}
+				});
+			});
+
+			// Level2 controll level3
+			//排重
+			for(var i=0;i<tnav3listanchor.length;i++){
+				var flag=false;
+				for(var j=0;j<nav4listanchor.length;j++){
+					if(tnav3listanchor[i]==nav4listanchor[j])flag=true;
+				}
+				if(flag==false)nav3listanchor.push(tnav3listanchor[i]);
+			}
+
+			$.each(nav2s, function(nav) {
+				$(this).click(function(){
+					$.each(nav2s, function() {
+						$(this).removeClass('current');
+					});
+					$(this).addClass('current');
+					
+					_subid = $(this).attr('_subid');
+					Rpm.currentL2.id = _subid;
+					if($(this).attr('_haschild')==0){
+						$.each(nav3list,function(){
+							$(this).hide();
+						});
+						showPage($(this));
+					}else{
+						trace('now click');
+						trace('#nav3_' + Rpm.currentL1.id + '_'+ Rpm.currentL2.id);
+						_current = $('#nav3_' + Rpm.currentL1.id + '_'+ Rpm.currentL2.id);
+						$.each(nav3list, function() {
+							$(this).hide()
+						});
+						$(_current).show();
+						showLeap();
+					}
+				});
+			});
+
+			
+			$.each(nav3listanchor,function(nav){
+				var _haschild =$(this).attr('_haschild');
+				$(this).click(function(){
+//					alert($(this).attr('_haschild'))
+					var navlists_ul = $(this).parent().parent().find('ul');//HE.$('ul', nav.parentNode.parentNode);
+					$.each(navlists_ul, function() {
+						$(this).hide();
+					});
+					$.each(nav3listanchor,function(){
+						$(this).removeClass('current');
+					});
+					$(this).addClass('current');
+
+					$.each(nav4listanchor,function(){
+						$(this).removeClass('current');
+
+					});
+					if (_haschild == 1) {
+                        var childmenu = $(this).parent().find('ul:first');
+                        childmenu.show();
+                        var leap=childmenu.find('li a:first');
+                        leap.addClass('current');
+                        showPage(leap);
+					} else if (_haschild == 0) {
+                        showPage(this);
+					}
+				});
+			});
+			$.each(nav4listanchor,function(){
+				$(this).click(function(){
+					var siblings = $(this).parent().parent().find('a');
+				
+					showPage(this);
+					$.each(siblings, function() {
+						trace($(this).html());
+						$(this).attr('class','');//因为第4级菜单可能开始没有current,所以采用这样的方式清除样式
+					});
+					$(this).addClass('current');
+				});
+			});
+			
+			function showLeap(){
+				var subnav3list = $('#nav3_' + Rpm.currentL1.id + '_'+ Rpm.currentL2.id+' a');
+				if (subnav3list.length > 0) {
+					$.each(subnav3list, function() {
+						$(this).removeClass('current');
+					});
+					$(subnav3list[0]).addClass('current');
+					
+					var _subnav3id = $(subnav3list[0]).attr('_subid');
+					trace('_subid='+_subnav3id)
+					if ($(subnav3list[0]).attr('_haschild') == '1') {
+						$.each($('#navcontainer ul'), function() {
+							$(this).hide();
+						});
+						var currentNav3 =$('#nav3_' + Rpm.currentL1.id + '_' + Rpm.currentL2.id);
+						$(currentNav3).show();
+						if ($(currentNav3).attr('_haschild') == '1') {
+							var nav4lists = $(currentNav3).find('ul li');
+						} else {
+							showPage($(currentNav3).find('a:first'));
+						}
+					} else {
+						showPage(subnav3list[0]);
+					}
+				}
+			}
+			function showPage(obj) {
+				trace('show page and obj text='+$(obj).html())
+				var _href = $(obj).attr('_href');
+				trace('_href='+_href);
+				if (_href == '' || _href == null) {
+					$('#cntIframe').attr('src', 'maintance.html');
+				} else {
+					$('#cntIframe').attr('src',  _href);
+				}
+			}
+		}
+	});
+		
+function createButton(arr){
+	var area=HE.$('#btnarea');
+	area.innerHTML='';
+	for(var i=0;i<arr.length;i++){
+		switch(arr[i].id){
+		case "ADD":
+			if(RouterConfig.privilege=='view')break;
+			var span=PM.$c('span');
+			var a=PM.$c('a');
+			a.href="javascript:;";
+			a.id="btn_Add";
+			a.innerHTML='ADD';
+			a.className=arr[i].cls||'';
+			PM.addEvent(a,arr[i].func);
+			span.appendChild(a);
+			area.appendChild(span);
+			break;
+		case "DELETE":
+			if(RouterConfig.privilege=='view')break;
+			var span=$('<span></span>');
+			var a=$('<a></a>');
+			a.attr('href',"javascript:;");
+			a.attr('id',"btn_Delete");
+			a.html('DELETE');
+			a.addClass(arr[i].cls||'');
+			a.click(arr[i].func);
+			span.append(a);
+			area.appendChild(span[0]);
+			break;
+		case "CANCEL":
+			if(RouterConfig.privilege=='view')break;
+			var span=PM.$c('span');
+			var a=PM.$c('a');
+			a.href="javascript:;";
+			a.id="btn_Cancel";
+			a.innerHTML='CANCEL';
+			a.className=arr[i].cls||'';
+			PM.addEvent(a,arr[i].func);
+			span.appendChild(a);
+			area.appendChild(span);
+			break;
+		case "APPLY":
+			if(RouterConfig.privilege=='view')break;
+			var span=PM.$c('span');
+			var a=PM.$c('a');
+			a.href="javascript:;";
+			a.id="btn_Apply";
+			a.innerHTML='APPLY';
+			a.className=arr[i].cls||'';
+			PM.addEvent(a,arr[i].func);
+			span.appendChild(a);
+			area.appendChild(span);
+			break;
+		case "REFRESH":
+			var span=PM.$c('span');
+			var a=PM.$c('a');
+			a.href="javascript:;";
+			a.id="btn_Refresh";
+			a.innerHTML='REFRESH';
+			a.className=arr[i].cls||'';
+			PM.addEvent(a,arr[i].func);
+			span.appendChild(a);
+			area.appendChild(span);
+			break;
+		default:
+			if(RouterConfig.privilege=='view')break;
+			var span=PM.$c('span');
+			var a=PM.$c('a');
+			a.href="javascript:;";
+			a.id="btn_"+arr[i].id;
+			a.innerHTML=arr[i].id;
+			a.className=arr[i].cls||'';
+			PM.addEvent(a,arr[i].func);
+			span.appendChild(a);
+			area.appendChild(span);
+			break;
+		}
+	}
+	
+}
+
+function iframeSize(param){
+	var param=param||{};
+	var cls="";
+	param.height?cls+=param.height:cls+='hg450';
+	param.width?cls+=' '+param.width:cls+=' wd1046';
+	if(typeof $!='undefined')
+		$('#cntIframe').attr('class',cls);
+}
+
+function popUp(params){
+	var params=params||{};
+	params.icon=params.icon||'04';
+	params.title = params.title ||'';
+	params.width=params.width||180;
+	params.height=params.height||140;
+	params.confirmfunc=params.confirmfunc||function(){};
+	params.textOk=params.textOk||'OK';
+	params.textCancel=params.textCancel||"Cancel";
+	var top=Math.ceil(($(window).height()-params.height-200)/2);
+	var left=Math.ceil(($(window).width()-params.width-200)/2);
+	trace($(window).width());
+	trace('top='+top);
+	trace('left='+left);
+	switch(params.type){
+	case "alert":
+		PM.popUp=new Dialog({
+			title : params.title||'',
+			left : left,
+			top: top,
+			icon:params.icon,
+			type : "alert",
+			content :params.content,
+			height:params.height,
+			width:params.width,
+			textOk:params.textOk,
+			confirmFunc : function(){
+				params.confirmfunc();
+			},
+			isDestory : true
+		}).show();
+		break;
+	case "confirm":
+		PM.popUp=new Dialog({
+			title : params.title||'',
+			left : left,
+			top: top,
+			icon:params.icon,
+			type : "confirm",
+			content :params.content,
+			height:params.height,
+			width:params.width,
+			textOk:params.textOk,
+			textCancel:params.textCancel,
+			confirmFunc : function(){
+				params.confirmfunc();
+			},
+			isDestory : true
+		}).show();
+		break;
+	case "nobtn":
+		PM.popUp=new Dialog({
+			title : params.title||'',
+			left : left,
+			top: top,
+			icon:params.icon,
+			type : "nobtn",
+			content :params.content,
+			height:params.height,
+			width:params.width,
+			isDestory : true
+		}).show();
+		break;
+	}
+	
+	PM.popUp.closeFlag=true;//是否可以关闭的flag
+	
+}
+
+function watisTips(){
+	popUp({title:'',height:90,width:240,type:'nobtn',content:$('#wait_tips').val()||RouterConfig.error.wait_tips,icon:'01'});
+}
+function closeTips(){
+	if(PM.popUp.closeFlag==false)return;
+		PM.popUp.closeFlag=false;
+		PM.popUp.destroy();
+}
+function checkServer(callback){
+	//var url=url||window.location.href;
+	var callback=callback||function(){};
+	PM.checkServerInterval=setInterval(function(){
+		$.ajax({
+			url:RouterConfig.check_url+'&r='+Math.random(),
+			type:'GET',
+			dataType:'xml',
+			timeout:9*1000
+		}).done(function(res){
+			if($(res).find('status').text()=='ok')
+				callback();
+		});
+	},10*1000);
+}
+function stopCheckServer(){
+	clearInterval(PM.checkServerInterval);
+}
+
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SystemInformation</title>
+    <link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd700">
+    <h3 class="wd600">Switching >> IGMP Snooping >> IGMP Snooping Configuration</h3>
+    <div class="tablecontent wd500">
+        <div class="tablecontenthead" ><span>IGMP Snooping Configuration</span></div>
+        <div class="tablecontentbody mgtop10 mgbtm10">
+
+        </div>
+        <div class="tablecontentfoot"></div>
+    </div>
+
+    <div class="tablecontent mgtop20 wd500">
+        <div class="tablecontenthead"><span>IGMP Statistics</span></div>
+        <div class="tablecontentbody mgtop10">
+
+        </div>
+        <div class="tablecontentfoot"></div>
+    </div>
+
+    <div class="tablecontent wd500">
+        <div class="tablecontenthead" ><span>IGMP Snooping Capacity</span></div>
+        <div class="tablecontentbody mgtop10 mgbtm10">
+
+        </div>
+        <div class="tablecontentfoot"></div>
+    </div>
+
+    <input type="hidden" id="numerror" value="Please input a valid number!" />
+    <input type="hidden" id="relationerr" value="Please input valid values, 2*(forward_delay-1)>=maxAge>=2*(hellotime+1) !" />
+    <input type="hidden" id="confirm_tips" value="This may cause the STP calculation which will take a period of time, are you sure?" />
+</div>
+</body>
+<script type="text/template" id="igmp_snooping_configuration">
+    <table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+        <tr><td class="ftbold">Global IGMP Status</td><td><input type="radio" value="Enable" name="igmp_status" <% if(status=='Enable'){%>checked<%}%>>Enable&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="Disable" name="igmp_status" <% if(status=='Disable'){%>checked<%}%>>Disable</td></tr>
+
+    </table>
+</script>
+<script type="text/template" id="igmp_statistics_tmpl">
+    <table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+        <tr><td class="ftbold">Clear Statistics</td><td><input type="radio" value="Yes" name="clear_sts" >Yes&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="No" name="clear_sts" checked>No</td></tr>
+        <tr><td class="ftbold">Received IGMP general queries </td><td><%= rev_gen_queries %></td></tr>
+        <tr><td class="ftbold">Received IGMPv1 reports</td><td><%= rev_igmpv1_report %></td></tr>
+        <tr><td class="ftbold">Received IGMPv2 reports</td><td><%= rev_igmpv2_report %></td></tr>
+        <tr><td class="ftbold">Sent IGMP general queries</td><td><%= sent_gen_queries %></td></tr>
+        <tr><td class="ftbold">Sent IGMP group-specific queries</td><td><%=  sent_grp_spe_queries %></td></tr>
+        <tr><td class="ftbold">Received IGMP leaves</td><td><%= rev_igmp_leaves %></td></tr>
+        <tr><td class="ftbold">Received IGMP specfied queries</td><td><%= rev_grp_spe_queries %></td></tr>
+    </table>
+</script>
+<script type="text/template" id="igmp_snooping_capacity_tmpl">
+    <table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+            <tr><td class="ftbold">Current/MAX IGMP Snooping VLAN</td><td><%= cur_igmp_vlan %></td></tr>
+            <tr><td class="ftbold">Current/MAX IGMP Group</td><td><%= cur_igmp_grp %></td></tr>
+    </table>
+</script>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+    RouterStart(2,function(){
+        IGMPSnoopingConfiguration();
+    });
+</script>
+
+</html>

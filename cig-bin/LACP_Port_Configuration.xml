@@ -1,0 +1,12 @@
+<lacp-port-cfg-list>
+<port>
+<id>1/1</id>
+<priority>32768</priority>
+<time-out>Long</time-out>
+</port>
+<port>
+<id>1/2</id>
+<priority>32768</priority>
+<time-out>Short</time-out>
+</port>
+</lacp-port-cfg-list>

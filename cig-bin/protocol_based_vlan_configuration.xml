@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol-vlan-list>
+ <protocol-vlan>
+  <vid>101</vid>
+  <profile>0</profile>
+ </protocol-vlan>
+<protocol-vlan>
+  <vid>201</vid>
+  <profile>1</profile>
+ </protocol-vlan>
+ <protocol-vlan>
+  <vid>201</vid>
+  <profile>1</profile>
+ </protocol-vlan>
+ <protocol-vlan>
+  <vid>201</vid>
+  <profile>1</profile>
+ </protocol-vlan>
+
+</protocol-vlan-list>

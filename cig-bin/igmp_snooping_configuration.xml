@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<igmp-cfg>
+<status>Enable</status>
+<rev-gen-queries>100</rev-gen-queries>
+<rev-igmpv1-report>10</rev-igmpv1-report>
+<rev-igmpv2-report>12</rev-igmpv2-report>
+<sent-gen-queries>10</sent-gen-queries>
+<sent-grp-spe-queries>10</sent-grp-spe-queries>
+<rev-igmp-leaves>10</rev-igmp-leaves>
+<rev-grp-spe-queries>10</rev-grp-spe-queries>
+<cur-igmp-vlan>10/256</cur-igmp-vlan>
+<cur-igmp-grp>100/256</cur-igmp-grp>
+</igmp-cfg>

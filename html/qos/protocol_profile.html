@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd800">QoS >> Profile >> Protocol Profile</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>Protocol Profile Add</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd600 mgleft20 hgc30"  id="table1">
+						<tr>
+							<td class="wd90 ftbold">ID</td>
+							<td class="wd90 ftbold">
+							<select id="sel_id">
+								<option value=""></option>
+								<option value="0">0&nbsp;&nbsp;</option>
+								<option value="1">1&nbsp;&nbsp;</option>
+								<option value="2">2&nbsp;&nbsp;</option>
+								<option value="3">3&nbsp;&nbsp;</option>
+								<option value="4">4&nbsp;&nbsp;</option>
+								<option value="5">5&nbsp;&nbsp;</option>
+								<option value="6">6&nbsp;&nbsp;</option>
+								<option value="7">7&nbsp;&nbsp;</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Encapsulation</td>
+							<td class="wd90 ftbold">
+							<select id="sel_enc">
+							    <option value=""></option>
+								<option value="ETHERNET II">ETHERNET II</option>
+								<option value="RFC1042">RFC1042</option>
+								<option value="LLC">LLC</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Protocol</td>
+							<td class="wd90 ftbold">
+							<select id="sel_pro">
+								<option value=""></option>
+							    <option value="ARP">ARP</option>
+								<option value="IPv4">IPv4</option>
+								<option value="IPv6">IPv6</option>
+								<option value="IPX">IPX</option>
+								<option value="Other">Other</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="wd90 ftbold">Ethernet Type</td>
+							<td class="wd90 ftbold" colspan="5">
+							<input type='text' value='0x' id='eth_type' size=8/>
+							</td>
+							
+						</tr>
+						<tr>
+							<td class="wd90 ftbold">DSAP</td>
+							<td class="wd90 ftbold">
+							<input type='text' value='0x' id='dsap' size=8/>
+							</td>
+							<td class="wd90 ftbold">SSAP</td>
+							<td class="wd90 ftbold">
+							<input type='text' value='0x' id='ssap' size=8/>
+							</td>
+							<td class="ftbold " colspan="2">&nbsp;&nbsp;&nbsp;<input id="pro_add" type="button" value="Add" class="middebtn" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontenthead mgtop10">
+					<span>Protocol Profile List</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please select an entry in the table!" id="novlanchecked" />
+				<input type="hidden" value="Please select an ID!" id="iderror" />
+				<input type="hidden" value="Please select an Encapsulation value!" id="encerror" />
+				<input type="hidden" value="Please select a Protocol value!" id="proerror" />
+				<input type="hidden" value="Please input valid Ethernet type!" id="ethtypeerror" />
+				<input type="hidden" value="Please input valid DSAP value!" id="dsaperror" />
+				<input type="hidden" value="Please input valid SSAP value!" id="ssaperror" />
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+
+RouterStart(2,function(){
+	protocolProfile();
+});
+
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd800">Switching >> MAC Table >> Static MAC Address</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>Static MAC Address</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd600 mgleft20 hgc30"  id="table1">
+						<tr>
+							<td class="wd90 ftbold">MAC Address</td>
+							<td class="wd90 ftbold">
+							<input type="text" size=16 value="" />
+							</td>
+							<td class="wd90 ftbold">VLAN ID</td>
+							<td class="wd90 ftbold">
+							<input type="text" value="" size=8 />
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="wd90 ftbold">Port</td>
+							<td class="wd90 ftbold">
+							<select></select>
+							</td>
+							<td class="wd90 ftbold">Type</td>
+							<td class="wd90 ftbold">
+							<select><option value="Static">Static</option><option value="Blackhole">Blackhole</option></select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;<input id="pro_add" type="button" value="Add" class="middebtn" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontenthead mgtop10">
+					<span>Static MAC Table</span>
+				</div>
+				<div class="tablenormaltext"><span>ST--Static    BH--Blackhole</span></div>
+				<div class="tablecontentbody mgtop10">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please select an entry in the table!" id="novlanchecked" />
+				<input type="hidden" value="pls choose ID!" id="iderror" />
+				<input type="hidden" value="Please select a port!" id="porterror" />
+				<input type="hidden" value="Please select type!" id="typeerror" />
+				<input type="hidden" value="Please input a valid MAC Address(H.H.H)!" id="addresserror" />
+				<input type="hidden" value="Please input a valid VLAN ID(1-4094)!" id="viderror" />
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+
+RouterStart(2,function(){
+	staticMacAddress();
+});
+
+</script>
+</html>

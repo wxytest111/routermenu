@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lacp-sys>
+<lacp-sys-priority>
+	32768
+</lacp-sys-priority>
+<lacp-load-balance>
+	SIP+DIP
+</lacp-load-balance>
+</lacp-sys>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+		<div class="ifmcontent">
+			<h3 class="wd400">Switching >> Address Table >> Address Table</h3>
+			<div class="tablecontent wd500">
+				<div class="tablecontenthead ">
+					<span>MAC Address Table</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10"></div>
+				<div class="tablecontentbody mgtop10"></div>
+				<div class="tablecontentfoot"></div>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	var port_data = {
+			head : [ {
+				value : '',
+				type : "checkbox",
+				id : 'allcheck',
+				cls : 'wd15'
+			}, {
+				value : 'VLAN ID',
+				type : 'nochangetext',
+				size : '4',
+				cls : 'wd54'
+			}, {
+				value : 'MAC Address',
+				type : 'nochangetext',
+				size : '4',
+				cls : 'wd120'
+			}, {
+				value : 'Interface',
+				type : 'nochangetext',
+				cls : 'wd54'
+			}, {
+				value : 'Status',
+				type : 'nochangetext',
+				cls : 'wd90'
+			} ],
+			body : [ {
+				id : "g1",
+				data : [ '1', 'Admit All', 'Disable', '0' ]
+			}, {
+				id : "g2",
+				data : [ '1', 'VLAN Only', 'Disable', '0' ]
+			} ]
+		};
+		new PM.checkTable(port_data, HE.$('div.tablecontentbody')[1]);
+
+		var normal_data = {
+			hasHead : false,
+			cls:'noborder alignleft wd450 mgleft20',
+			body : [ [ {
+				type : 'nochangetext',
+				value : 'Search By',
+				cls : 'wd170 ftbold'
+			}, {
+				type : 'select',
+				cls:'wd90 ftbold',
+				options : [ {
+					v : 'VLANID',
+					t : 'VLAN ID'
+				}, {
+					v : 'MACAddress',
+					t : 'MAC Address'
+				},{
+					v:'Port',
+					t:'Interface'
+				}]
+			},{
+				type:'text',
+				size:16,
+				value:'',
+				cls:'wd120'
+			},{
+				type:'button',
+				value:'GO',
+				funcs:{'click':searchAddressTable}
+			}],[{type:'nochangetext',value:'Total MAC Addresses',cls:'wd170 ftbold'},{type:'nochangetext',colspan:3,value:7}] ]
+		};
+		function searchAddressTable(){alert(1);}
+		new PM.normalTable(normal_data, HE.$('div.tablecontentbody')[0]);
+});
+	
+</script>
+</html>

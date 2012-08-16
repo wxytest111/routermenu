@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vlan-igmp-list>
+<vlan>
+	<vid>1</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>2</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>3</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>4</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>5</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>6</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+<vlan>
+	<vid>7</vid>
+	<host-time>200</host-time>
+	<mrouter-time>100</mrouter-time>
+	<drop-unknow>Enable</drop-unknow>
+	<version>2</version>
+</vlan>
+</vlan-igmp-list>

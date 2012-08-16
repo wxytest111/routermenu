@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<port-saving-list>
+<port>
+<id>1/1</id>
+<apdm>
+ Enable
+</apdm>
+<scm>
+Disable
+</scm>
+<eee>
+Disable
+ </eee>
+</port>
+<port>
+<id>1/2</id>
+<apdm>
+ Enable
+</apdm>
+<scm>
+ Enable
+</scm>
+<eee>
+Disable
+ </eee>
+ </port>
+</port-saving-list>

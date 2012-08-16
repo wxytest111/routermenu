@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+		<div class="ifmcontent">
+			<h3 class="wd400">Switching >> VLAN >> VLAN Table</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>VLAN Range</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+						<tr>
+							<td class="ftbold wd120">From VLAN ID</td><td class="wd80"><input type=text size=8 value="" id="start_vlan"/></td>
+							<td class="ftbold wd90">To VLAN ID</td><td class="wd80"><input type=text size=8 value="" id="end_vlan"/></td>
+							<td class="wd210 btnarea"><input type='button' id="btn_search_vlan" value="Go" class="middebtn" /><input type='hidden' id="btn_all_vlan" value="All" class="middebtn" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontenthead ">
+					<span>802.1Q VLAN Table</span>
+				</div>
+				<div class="tablecontentbody mgtop10"></div>
+				<div class="tablecontentfoot"></div>
+			</div>
+		</div>
+	<input type="hidden" value="Please input a valid VLAN ID(1-4094)!" id="searcherror" />
+	<input type="hidden" value="Please select a VLAN entry in the table!" id="novlanchecked" />
+	<input type="hidden" value="Default VLAN cannot be deleted!" id="defaultvlandelete" />
+	<input type="hidden" value="Selected VLAN range cannot exceed 1000. Please input valid VLAN range." id="rangeerror" />
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+function showVlan(id){
+	top.changeMenu('VLAN Configuration');
+	window.location.href="vlan_configuration.html?id="+id;
+}
+RouterStart(2,function(){
+	vlanTable();
+});
+	
+</script>
+</html>

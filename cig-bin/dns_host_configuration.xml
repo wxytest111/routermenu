@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dns-host-table-list>
+<r><host-name>www.aaa.com</host-name><host-ip>12.12.12.12</host-ip></r>
+<r><host-name>www.bbb.com</host-name><host-ip>12.12.12.13</host-ip></r>
+</dns-host-table-list>
+

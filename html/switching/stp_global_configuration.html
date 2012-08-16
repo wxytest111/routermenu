@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd600">
+	<h3 class="wd600">Switching >> STP >> STP Global Configuration</h3>
+	<div class="tablecontent wd500">
+		<div class="tablecontenthead" ><span>Global Setting</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+
+	<div class="tablecontent mgtop20 wd500">
+		<div class="tablecontenthead"><span>STP Status</span></div>
+		<div class="tablecontentbody mgtop10">
+		
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+	<input type="hidden" id="numerror" value="Please input a valid number!" />
+	<input type="hidden" id="relationerr" value="Please input valid values, 2*(forward_delay-1)>=maxAge>=2*(hellotime+1) !" />
+	<input type="hidden" id="confirm_tips" value="This may cause the STP calculation which will take a period of time, are you sure?" />
+</div>
+</body>
+<script type="text/template" id="global_setting">
+<table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+			<tr><td class="ftbold">Spanning Tree Status</td><td><select ><option value="Enable">Enable</option><option value="Disable">Disable</option></select></td></tr>
+			<tr><td class="ftbold">Spanning Tree Mode</td><td><select ><option value="RSTP">RSTP</option><option value="STP">STP</option></select></td></tr>
+			<tr><td class="ftbold">Bridge Priority</td><td><input type=text size=8 value="<%= pri %>" />(0 to 61440, step of 4096)</td></tr>
+			<tr><td class="ftbold">Bridge Max Age(secs)</td><td><input type=text size=8 value="<%= max_age%>" />(6 to 40)</td></tr>
+			<tr><td class="ftbold">Bridge Hello Time(secs)</td><td><input type=text size=8 value="<%= hello_time %>" />(1 to 10)</td></tr>
+			<tr><td class="ftbold">Bridge Forward Delay(secs)</td><td><input type=text size=8 value="<%= forward_delay%>" />(4 to 30)</td></tr>
+			<tr><td class="ftbold">Transmission Limit</td><td><%= trans_limit %></td></tr>
+		</table>
+</script>
+<script type="text/template" id="stp_status">
+<table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+			<tr><td class="ftbold">Bridge Identifier</td><td><%= identifier %></td></tr>
+			<tr><td class="ftbold">Time Since Topology Change</td><td><%= time_since %></td></tr>
+			<tr><td class="ftbold">Designated Root</td><td><%= desginated_root %></td></tr>
+			<tr><td class="ftbold">Root Path Cost</td><td><%= root_path_cost %></td></tr>
+			<tr><td class="ftbold">Root Port</td><td><% if(root_port=='none'){}else {%><%= root_port%><% }%></td></tr>
+			<tr><td class="ftbold">Root Max Age(secs)</td><td><%= max_age %></td></tr>
+			<tr><td class="ftbold">Root Forward Delay(secs)</td><td><%= forward_delay%></td></tr>
+			<tr><td class="ftbold">Root Hello Time(secs)</td><td><%= hello_time %></td></tr>
+		</table>
+</script>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	STPGlobalConfiguration();
+});
+</script>
+
+</html>

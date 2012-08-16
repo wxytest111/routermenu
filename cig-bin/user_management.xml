@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user-info-list>
+	<user-info>
+		<name>test</name>
+		<pwd>test</pwd>
+		<privilege>View</privilege>
+		</user-info>
+		<user-info>
+		<name>admin</name>
+		<pwd>admin</pwd>
+		<privilege>Configure</privilege>
+		</user-info>
+		<user-info>
+		<name>test1</name>
+		<pwd>test</pwd>
+		<privilege>View</privilege>
+		</user-info>
+		<user-info>
+		<name>test2</name>
+		<pwd>test</pwd>
+		<privilege>View</privilege>
+		</user-info>
+	</user-info-list>
+	

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="xinyu" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+		<div class="ifmcontent">
+			<h3 class="wd400">Switching >> VLAN >> VLAN Configuration</h3>
+			<div class="tablecontent wd1024">
+				<div class="tablecontenthead ">
+					<span>VLAN Configuration</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+						<tr>
+							<td class="ftbold wd60">VLAN ID</td><td class="wd80"><input type=text size=8 value="" id="vlan_id"/></td>
+							<td class="ftbold wd60">VLAN Name</td><td class="wd80"><input type=text size=8 value="" id="vlan_name"/></td>
+							<td class="wd210 btnarea"><input class="middebtn" type='button' id="vlan_apply" value="Apply" /><input class="middebtn" type='button' id="vlan_refresh" value="Refresh" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontentbody mgtop10"></div>
+				<div class="tablecontentbody mgtop10">
+					<table cellspacing="1" 
+						cellpadding="1" class="wd946 mgleft20" id="table2" style="border:2px solid white;">
+						<thead>
+							<tr class="firstalignleft"><td class="ftbold wd54">Ports</td><th class="wd54">All</th></tr>
+						</thead>
+						<tr class="firstalignleft  oddrows"><td class="ftbold wd54">Untag</td><th class="wd54"><input type="button" value="All" id="untag_all" /></th></tr>
+						<tr class="firstalignleft "><td class="ftbold wd54">Tag</td><th><input type="button" value="All" id="tag_all" /></th></tr>
+						<tr class="firstalignleft  oddrows"><td class="ftbold wd54">Not Member</td><th class="wd54"><input type="button" value="All" id="notmember_all"/></th></tr>
+					</table>
+				</div>
+				<div class="tablecontentbody mgtop10 wd1024">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd946 mgleft20">
+						<tr class="firstalignleft">
+							<td class="wd140 ftbold">Untags Ports</td>
+							<td class="wd800 ftbold ">
+								<input type="text" size=120 value="" onfocus="this.blur()" id="untags_text"/>
+							</td>
+						</tr>
+						<tr class="firstalignleft">
+							<td class="wd140 ftbold">Tag Ports</td>
+							<td class="wd800 ftbold">
+								<input type="text" size=120 value="" onfocus="this.blur()" id="tags_text"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablecontentfoot mgtop10">
+				<input type="hidden" value="Please input a valid VLAN ID(1-4094)!" id="searcherror" />
+				<input type="hidden" value="Please input a valid VLAN name!" id="nameerror" />
+				<input type="hidden" value="Please select a VLAN entry in the table!" id="novlanchecked" />
+				</div>
+			</div>
+		</div>
+
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	vlanConfiguration();
+});
+	
+</script>
+</html>

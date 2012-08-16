@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<igmp-querier-list>
+<vlan>
+	<vid>1</vid>
+	<mode>Enable</mode>
+	<query-inval>200</query-inval>
+	<max-response-time>100</max-response-time>
+	<last-member-query-inval>1</last-member-query-inval>
+	<sip>10.88.1.1</sip>
+</vlan>
+<vlan>
+	<vid>2</vid>
+	<mode>Enable</mode>
+	<query-inval>200</query-inval>
+	<max-response-time>100</max-response-time>
+	<last-member-query-inval>1</last-member-query-inval>
+	<sip>10.88.1.1</sip>
+</vlan>
+
+</igmp-querier-list>

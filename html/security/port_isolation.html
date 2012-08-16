@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3>Security >> Traffic Control >> Port Isolation</h3>
+			<div class="tablecontent wd1024">
+				<div class="tablecontenthead">
+					<span>Port Isolation</span>
+				</div>
+				<div class="tablecontentbody mgtop20">
+					<table border="0" cellspacing="1"
+						cellpadding="1" class="noborder alignleft wd400 mgleft20" id="table1">
+						<tr>
+							<td class="wd120 ftbold">Group</td>
+							<td class="wd90 ftbold">
+							<select id="sel_group">
+							<option value="">&nbsp;&nbsp;</option>
+							<option value="1">1&nbsp;&nbsp;</option><option value="2">2&nbsp;&nbsp;</option><option value="3">3&nbsp;&nbsp;</option><option value="4">4&nbsp;&nbsp;</option><option value="5">5&nbsp;&nbsp;</option><option value="6">6&nbsp;&nbsp;</option><option value="7">7&nbsp;&nbsp;</option><option value="8">8&nbsp;&nbsp;</option><option value="9">9&nbsp;&nbsp;</option><option value="10">10&nbsp;&nbsp;</option><option value="11">11&nbsp;&nbsp;</option><option value="12">12&nbsp;&nbsp;</option><option value="13">13&nbsp;&nbsp;</option><option value="14">14&nbsp;&nbsp;</option><option value="15">15&nbsp;&nbsp;</option><option value="16">16&nbsp;&nbsp;</option><option value="17">17&nbsp;&nbsp;</option><option value="18">18&nbsp;&nbsp;</option><option value="19">19&nbsp;&nbsp;</option><option value="20">20&nbsp;&nbsp;</option><option value="21">21&nbsp;&nbsp;</option><option value="22">22&nbsp;&nbsp;</option><option value="23">23&nbsp;&nbsp;</option><option value="24">24&nbsp;&nbsp;</option><option value="25">25&nbsp;&nbsp;</option><option value="26">26&nbsp;&nbsp;</option><option value="27">27&nbsp;&nbsp;</option><option value="28">28&nbsp;&nbsp;</option><option value="29">29&nbsp;&nbsp;</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Status</td>
+							<td class="wd90 ftbold">
+							<select id="sel_status">
+							<option value=''></option>
+							<option value="Enable">Enable</option><option value="Disable">Disable</option></select>
+							</td>
+							
+						</tr>
+						<tr style="display:none;">
+							<td class="wd120 ftbold">Analyzer Port1</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_port1">
+								<option value=""></option>
+								<option value="1">1/1</option><option value="2">1/2</option><option value="3">1/3</option><option value="4">1/4</option><option value="5">1/5</option><option value="6">1/6</option><option value="7">1/7</option><option value="8">1/8</option><option value="9">1/9</option><option value="10">1/10</option><option value="11">1/11</option><option value="12">1/12</option><option value="13">1/13</option><option value="14">1/14</option><option value="15">1/15</option><option value="16">1/16</option><option value="17">1/17</option><option value="18">1/18</option><option value="19">1/19</option><option value="20">1/20</option><option value="21">1/21</option><option value="22">1/22</option><option value="23">1/23</option><option value="24">1/24</option><option value="25">1/25</option><option value="26">1/26</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Direction</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_dir1"><option value=""></option><option value="Ingress">Ingress</option><option value="Egress">Egress</option><option value="Both">Both</option></select>
+							</td>
+						</tr>
+						<tr style="display:none;">
+							<td class="wd120 ftbold">Analyzer Port2</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_port2">
+								<option value=""></option>
+								<option value="1">1/1</option><option value="2">1/2</option><option value="3">1/3</option><option value="4">1/4</option><option value="5">1/5</option><option value="6">1/6</option><option value="7">1/7</option><option value="8">1/8</option><option value="9">1/9</option><option value="10">1/10</option><option value="11">1/11</option><option value="12">1/12</option><option value="13">1/13</option><option value="14">1/14</option><option value="15">1/15</option><option value="16">1/16</option><option value="17">1/17</option><option value="18">1/18</option><option value="19">1/19</option><option value="20">1/20</option><option value="21">1/21</option><option value="22">1/22</option><option value="23">1/23</option><option value="24">1/24</option><option value="25">1/25</option><option value="26">1/26</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Direction</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_dir2"><option value=""></option><option value="Ingress">Ingress</option><option value="Egress">Egress</option><option value="Both">Both</option></select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablecontenthead mgtop20">
+					<span>Uplink Ports & Isolated Ports</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table  cellspacing="1" 
+						cellpadding="1" class="wd946 mgleft20" id="table2" style="border:2px solid white;">
+						<thead>
+							<tr class="firstalignleft"><td class="ftbold wd54">Ports</td></tr>
+						</thead>
+						<tr class="firstalignleft  oddrows"><td class="ftbold wd54">Uplink</td></tr>
+						<tr class="firstalignleft "><td class="ftbold wd54">Isolated</td></tr>
+						<tr class="firstalignleft hide"><td class="ftbold wd54">Both</td></tr>
+						<tr class="firstalignleft   oddrows"><td class="ftbold wd54">Not Member</td></tr>
+					</table>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table border="0"  cellspacing="1"
+						cellpadding="1" class="noborder alignleft wd946  mgleft20" id="table3">
+						<tr>
+							<td class="wd140 ftbold">Uplink Ports</td>
+							<td class="wd800 ftbold ">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="ingress_text"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="wd140 ftbold">Isolated Ports</td>
+							<td class="wd800 ftbold">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="egress_text"/>
+							</td>
+						</tr>
+						<tr style="display:none;">
+							<td class="wd120 ftbold">Both</td>
+							<td class="wd300 ftbold">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="both_text"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablecontentfoot mgtop10">
+				<input type='hidden' id="statuserr" value="Please choose Status!" />
+				<input type='hidden' id="suc_tips" value="Operate Success!" />
+				<input type="hidden" id="dir_tips" value="Directions Param Error.Please look at the manual." />
+				<input type="hidden" id="commit_url" value="/cig-bin/port_mirroring_commit.xml?" />
+				</div>
+			</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+	RouterStart(2,function(){
+		portIsolation();
+	})
+	
+	</script>
+</html>

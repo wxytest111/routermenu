@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stp-global-cfg>
+<status>Disable</status>
+<mode>RSTP</mode>
+<bridge-pri>4096</bridge-pri>
+<bridge-max-age>6</bridge-max-age>
+<bridge-hello-time>2</bridge-hello-time>
+<bridge-forward-delay>4</bridge-forward-delay>
+<trans-limit>3 packets/hello-time</trans-limit>
+<bridge-identifier>
+32768-00:00:00:00:00:00
+</bridge-identifier>
+<time-sin-last-topology-change>
+0d:0h:0m:5s
+</time-sin-last-topology-change>
+<designated-root>
+32768-00:00:00:00:00:00
+</designated-root>
+<root-path-cost>
+0
+</root-path-cost>
+<root-port>
+none
+</root-port>
+<root-max-age>
+20
+</root-max-age>
+<root-forward-delay>
+15
+</root-forward-delay>
+<root-hello-time>
+2
+</root-hello-time>
+</stp-global-cfg>

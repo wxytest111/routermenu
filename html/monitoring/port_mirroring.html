@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3>Monitoring >> Mirroring >> Port Mirroring</h3>
+			<div class="tablecontent wd1024">
+				<div class="tablecontenthead">
+					<span>Port Mirroring</span>
+				</div>
+				<div class="tablecontentbody mgtop20">
+					<table border="0" cellspacing="1"
+						cellpadding="1" class="noborder alignleft wd400 mgleft20" id="table1">
+						<tr>
+							<td class="wd120 ftbold">Group</td>
+							<td class="wd90 ftbold">
+							<select id="sel_group">
+							<option value="0">0&nbsp;&nbsp;</option>
+							<option value="1">1&nbsp;&nbsp;</option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Status</td>
+							<td class="wd90 ftbold">
+							<select id="sel_status"><option value="Enable">Enable</option><option value="Disable">Disable</option></select>
+							</td>
+							
+						</tr>
+						<tr>
+							<td class="wd120 ftbold">Analyzer Port1</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_port1">
+								<option value=""></option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Direction</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_dir1"><option value=""></option><option value="Ingress">Ingress</option><option value="Egress">Egress</option><option value="Both">Both</option></select>
+							</td>
+						</tr>
+						<tr>
+							<td class="wd120 ftbold">Analyzer Port2</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_port2">
+								<option value=""></option>
+							</select>
+							</td>
+							<td class="wd90 ftbold">Direction</td>
+							<td class="wd90 ftbold">
+							<select id="sel_analy_dir2"><option value=""></option><option value="Ingress">Ingress</option><option value="Egress">Egress</option><option value="Both">Both</option></select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablecontenthead mgtop50">
+					<span>Mirrored Port</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table  cellspacing="1" 
+						cellpadding="1" class="wd946 mgleft20" id="table2" style="border:2px solid white;">
+						<thead>
+							<tr class="firstalignleft"><td class="ftbold wd54">Direction</td></tr>
+						</thead>
+						<tr class="firstalignleft  oddrows"><td class="ftbold wd54">Ingress</td></tr>
+						<tr class="firstalignleft "><td class="ftbold wd54">Egress</td></tr>
+						<tr class="firstalignleft  oddrows"><td class="ftbold wd54">Both</td></tr>
+						<tr class="firstalignleft"><td class="ftbold wd54">None</td></tr>
+					</table>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table border="0" cellspacing="1"
+						cellpadding="1" class="noborder alignleft wd450 mgleft20" id="table3">
+						<tr>
+							<td class="wd120 ftbold">Ingress</td>
+							<td class="wd300 ftbold ">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="ingress_text"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="wd120 ftbold">Egress</td>
+							<td class="wd300 ftbold">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="egress_text"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="wd120 ftbold">Both</td>
+							<td class="wd300 ftbold">
+							<input type="text" size=120 value="" onfocus="this.blur()" id="both_text"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="tablecontentfoot mgtop10">
+				<input type='hidden' id="suc_tips" value="Operation succeeded!" />
+				<input type="hidden" id="dir_tips" value="Directions error. Please look at the manual." />
+				<input type="hidden" id="commit_url" value="/cig-bin/port_mirroring_commit.xml?" />
+				</div>
+			</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+	RouterStart(2,function(){
+		var defgroup=HE.getPara(location.href,'group');
+		defgroup=defgroup||0;
+		HE.ajax({
+			url:RouterConfig.port_mirror+'dispatch=show mirroring-group '+defgroup,
+			method:'get',
+			useXml:true
+		},function(result){
+			var pmo=new PortMirror(result,{'group':defgroup,'table1':HE.$('#table1'),'table2':HE.$('#table2'),'table3':HE.$('#table3')});
+			top.createButton([{id:'APPLY',func:function(){
+				pmo.submit();
+			}},{id:'REFRESH',func:function(){window.location.reload();}}]);
+		});
+		
+	})
+	
+	</script>
+</html>

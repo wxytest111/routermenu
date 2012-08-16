@@ -1,0 +1,17 @@
+<ip-cfg>
+<type>
+Static
+</type>
+<ip-addr>
+192.168.1.53
+</ip-addr>
+<sub-mask>
+255.255.255.0
+</sub-mask>
+<default-gw>
+192.168.1.1
+</default-gw>
+<manager-vid>
+1
+</manager-vid>
+</ip-cfg>

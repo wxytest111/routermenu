@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>AddressTable</title>
+    <link rel="stylesheet" href="../../css/proxy.css" type="text/css"/>
+</head>
+<body>
+<div class="ifmcontent">
+    <h3 class="wd600">Switching >> LAG >> LACP Configuration</h3>
+
+    <div class="tablecontent wd600">
+        <div class="tablecontenthead ">
+            <span>LACP Configuration</span>
+        </div>
+        <div class="tablecontentbody mgtop10 mgbtm10">
+            <table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600">
+                <tr>
+                    <td class="ftbold wd120">LACP System Priority</td>
+                    <td class="wd140"><input type=text size=10 value="" id="add_mac_address"/>(0 to 65535)</td>
+                </tr>
+                <tr>
+                    <td class="ftbold wd120">Load Balancing</td>
+                    <td class="wd140">
+                        <select>
+                            <option value=""></option>
+                            <option value="DMAC">DMAC</option>
+                            <option value="SMAC">SMAC</option>
+                            <option value="DMAC+SMAC">DMAC+SMAC</option>
+                            <option value="SIP">SIP</option>
+                            <option value="DIP">DIP</option>
+                            <option value="SIP+DIP">SIP+DIP</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="Please Valid Priority 0 to 65535!" id="err">
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+    RouterStart(2, function () {
+        LACPConfiguration();
+    });
+</script>
+</html>

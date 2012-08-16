@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd800">Security >> Traffic Control >> Storm Control</h3>
+			<div class="tablecontent wd946">
+				<div class="tablecontenthead ">
+					<span>Storm Control</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please select a Unit type!" id="uniterror" />
+				<input type="hidden" value="Please input valid Threshold value!" id="therror" />
+				<input type="hidden" value="Please select a port!" id="novlanchecked" />
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+RouterStart(2,function(){
+	stormControl();
+});
+
+</script>
+</html>

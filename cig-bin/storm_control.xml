@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<storm-control-list>
+<port>
+<id>1/1</id>
+<uuc-status>Enable</uuc-status>
+<uuc-unit>kbps</uuc-unit>
+<uuc-threshold>1100</uuc-threshold>
+ <bc-status>Disable</bc-status>
+ <bc-unit>N/A</bc-unit>
+ <bc-threshold>N/A</bc-threshold>
+ <mc-status>Enable</mc-status>
+ <mc-unit>pps</mc-unit>
+ <mc-threshold>1100</mc-threshold>
+</port>
+<port>
+<id>1/2</id>
+<uuc-status>Enable</uuc-status>
+<uuc-unit>kbps</uuc-unit>
+<uuc-threshold>1100</uuc-threshold>
+ <bc-status>Disable</bc-status>
+ <bc-unit>N/A</bc-unit>
+ <bc-threshold>N/A</bc-threshold>
+ <mc-status>Disable</mc-status>
+ <mc-unit>N/A</mc-unit>
+ <mc-threshold>N/A</mc-threshold>
+</port>
+</storm-control-list>

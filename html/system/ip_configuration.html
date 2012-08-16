@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd800">
+	<h3 class="wd500">System >> Management >> IP Configuration</h3>
+	<div class="tablecontent wd450">
+		<div class="tablecontenthead wd450" ><span>IP Configuration</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		<table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd450 mgleft20" >
+			<tr><td class="ftbold"><input type='radio' name="net_proto_next"  id="ra1" value="Static" checked/>Static</td><td class="ftbold"><input type='radio' id="ra2" name="net_proto_next"  value="DHCP" />DHCP</td></tr>
+			<tr><td class="ftbold">IP Address</td><td><input id="ipaddr" type="text"  maxlength="15" value="" /></td></tr>
+			<tr><td class="ftbold">Subnet Mask</td><td><input id="subnet" type="text"  maxlength="15" value="" /></td></tr>
+			<tr><td class="ftbold">Default Gateway</td><td><input id="gateway" type="text"  maxlength="15" value="" /></td></tr>
+		</table>
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+
+	<div class="tablecontent wd450 mgtop20">
+		<div class="tablecontenthead"><span>Management VLAN</span></div>
+		<div class="tablecontentbody mgtop10">
+		<table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd450 mgleft20" >
+			<tr><td class="ftbold">Management VLAN ID</td><td><input id="vlan_id" type="text"    value="" />(1-4094)</td></tr>
+		</table>
+		</div>
+		<div class="tablecontentfoot">
+			<input type="hidden" id="ip_error" value="pls input right IP address!" />
+			<input type="hidden" id="id_error" value="pls input right VLAN ID!" />
+			<input type="hidden" id="apply_tips" value="This will change the IP address or Management VLAN of the device. Please reconnect the device." />
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	ipConfiguration();
+});
+</script>
+
+</html>

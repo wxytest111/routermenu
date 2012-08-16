@@ -1,0 +1,14 @@
+<mac-table-list>
+<r>
+	<mc>0011.2222.3333</mc>
+	<vid>1</vid>
+	<p>1/3</p>
+	<t>Static</t>
+	</r>
+<r>
+	<mc>0011.3333.4444</mc>
+	<vid>2</vid>
+	<p>1/4</p>
+	<t>Static</t>
+	</r>
+</mac-table-list>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd800">
+	<h3 class="wd500">Maintenance >> Upgrade >> TFTP Upgrade</h3>
+	<div class="tablecontent wd450">
+		<div class="tablecontenthead wd450" ><span>TFTP Upgrade</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		<table align="center"   cellspacing="1" cellpadding="1" class="noborder alignleft wd450 mgleft20" >
+			<tr><td class="ftbold">TFTP Server IP</td><td><input id="tftp_server" type="text"  maxlength="15" value="" /></td></tr>
+			<tr><td class="ftbold">File Type</td><td><select id="file_type"><option value="Application">Application</option><option value="Kernel">Kernel</option></select></td></tr>
+			<tr><td class="ftbold">File Name</td><td><input id="file_name" type="text"   value="" size=30/></td></tr>
+		</table>
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+	<input type="hidden" id="nameerror" value="Please input valid file name!"/>
+	<input type="hidden" id="confirm_tips" value="Are you sure to upgrade?"/>
+	<input type="hidden" id="jump_tips" value="Upgrade succeeded. Do you want to reboot the device?"/>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+RouterStart(2,function(){
+	TFTPUpgrade();
+});
+</script>
+
+</html>

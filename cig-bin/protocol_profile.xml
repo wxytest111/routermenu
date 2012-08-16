@@ -1,0 +1,36 @@
+<protocol-profile-list>
+<profile>
+<id>0</id>
+<encapsulation>
+LLC
+</encapsulation>
+<protocol>
+ Other
+</protocol>
+<ethernet-type>
+1111
+</ethernet-type>
+<dsap>
+22
+</dsap>
+<ssap>
+33</ssap>
+</profile>
+<profile>
+<id>1</id>
+<encapsulation>
+LLC
+</encapsulation>
+<protocol>
+ Other
+</protocol>
+<ethernet-type>
+1111
+</ethernet-type>
+<dsap>
+22
+</dsap>
+<ssap>
+33</ssap>
+</profile>
+</protocol-profile-list>

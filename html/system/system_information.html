@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd600">
+	<h3 class="wd600">System >> Management >> System Information</h3>
+	<div class="tablecontent wd500">
+		<div class="tablecontenthead" ><span>System Information</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+
+	<div class="tablecontent mgtop20 wd500">
+		<div class="tablecontenthead"><span>Versions</span></div>
+		<div class="tablecontentbody mgtop10">
+		
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+	<input type="hidden" id="nameerr" value="Please input valid Name value, 1-20 characters and a-z,A-Z and 0-9 only!"/>
+	<input type="hidden" id="locaerr" value="Please input valid Location value, 1-19 characters and a-z,A-Z and 0-9 only!!"/>
+	<input type="hidden" id="conterr" value="Please input valid Contact value, 1-20 characters and a-z,A-Z and 0-9 only!!"/>
+</div>
+</body>
+<script type="text/template" id="infos">
+		<table align="center" border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+			<tr><td class="ftbold">System Name</td><td><input type=text size=30 value="<%= sys_name %>"></td></tr>
+			<tr><td class="ftbold">System Location</td><td><input type=text size=30 value="<%= sys_location %>"></td></tr>
+			<tr><td class="ftbold">System Contact</td><td><input type=text size=30 value="<%= sys_contact %>"></td></tr>
+			<tr><td class="ftbold">Serial Number</td><td><%= serial_number %></td></tr>
+			<tr><td class="ftbold">System Object ID</td><td><%= sys_obj_id %></td></tr>
+			<tr><td class="ftbold">Date & Time</td><td><%= date_time%></td></tr>
+			<tr><td class="ftbold">System Up Time</td><td><%= sys_up_time%></td></tr>
+			<tr><td class="ftbold">Base MAC Address</td><td><%= base_mac_addr%></td></tr>
+		</table>
+</script>
+<script type="text/template" id="vers">
+		<table align="center" border="0" cellspacing="1" cellpadding="1">
+			<thead>
+			<tr>
+			<th class="wd140">Model Name</th>
+			<th class="wd140">Boot Version</th>
+			<th class="wd140">Software Version</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ><td><%= model_name%></td><td><%= boot_version%></td><td><%= soft_version%></td></tr>
+			</tbody>
+		</table>
+</script>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+RouterStart(2,function(){
+	systemInformation();
+});
+</script>
+
+</html>

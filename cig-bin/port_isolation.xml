@@ -1,0 +1,12 @@
+
+<isol-group-list>
+	<group>
+		<id>3</id>
+		<uplink-port-list>
+			<port>1/7</port>
+		</uplink-port-list>
+		<isol-port-list>
+			<port>1/5</port>
+		</isol-port-list>
+	</group>
+</isol-group-list>

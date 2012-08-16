@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd800">
+	<h3 class="wd600">Maintenance >> Diagnosis >> Ping</h3>
+	<div class="tablecontent wd700">
+		<div class="tablecontenthead " ><span>Ping</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		<table align="center"  cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20" >
+			<tr><td class="ftbold">IP Address/Hostname</td><td><input id="ip_address" type="text" size=40 value="" />(A.B.C.D/Max 255 characters)</td></tr>
+			<tr><td class="ftbold">Count</td><td><input type="text" id="count" value="3" />(1-15)</td></tr>
+			<tr><td class="ftbold">Size</td><td><input id="size" type="text"   value="8" />(8-12000)</td></tr>
+			<tr><td class="ftbold">Ping Result</td><td></td></tr>
+			<tr>
+				<td colspan=2>
+						<textarea rows="10" cols="90"></textarea>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+    <input type="hidden" id="chkip_host_err" value="Please input valid IP address or Hostname!" />
+	<input type="hidden" id="counterror" value="Please input valid Count value!"/>
+	<input type="hidden" id="sizeerror" value="Please input valid Size value!"/>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+RouterStart(2,function(){
+	Ping();
+});
+</script>
+
+</html>

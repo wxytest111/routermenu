@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd500">Security >> Management Security >> User Management</h3>
+		<div class="tablecontent wd600">
+			<div class="tablecontenthead ">
+				<span>User Management</span>
+			</div>
+			<div class="tablecontentbody mgtop10 mgbtm10">
+				<table border="0"  cellspacing="1" cellpadding="1"
+					class="noborder alignleft mgleft20 wd600">
+					<tr>
+						<td class="ftbold wd120">User Name</td>
+						<td colspan=3><input type=text size=20 value=""
+							id="user_name" maxlength=31 /></td>
+					</tr>
+					<tr>
+						<td class="ftbold wd120">Password</td>
+						<td colspan=3><input type=text size=20 value="" id="pwd"
+							maxlength=20 /></td>
+					</tr>
+					<tr>
+						<td class="ftbold wd120">Privilege</td>
+						<td colspan=2><select><option value="View">View</option>
+								<option value="Configure">Configure</option></select></td>
+						<td><input type='button' id="btn_add" value="Add"
+							class="middebtn" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="tablecontenthead ">
+				<span>User Table</span>
+			</div>
+			<div class="tablecontentbody mgtop10"></div>
+			<div class="tablecontentfoot"></div>
+		</div>
+	</div>
+	<input type="hidden" value="Please input valid username, 1-31 characters including letters and digits only!" id="nameerr" />
+	<input type="hidden" value="Please input valid password, maximum 19 ASCII characters !" id="pwderr" />
+	<input type="hidden" value="Please choose one user!" id="nochecked" />
+	<input type="hidden" value="Default User cannot be deleted!"
+		id="defaultvlandelete" />
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+	
+	RouterStart(2, function() {
+		userManagement();
+	});
+</script>
+</html>

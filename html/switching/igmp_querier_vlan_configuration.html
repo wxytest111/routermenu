@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd600">Switching >> IGMP Snooping >> IGMP Querier VLAN Configuration</h3>
+			<div class="tablecontent wd600">
+				<div class="tablecontenthead">
+					<span>IGMP Querier VLAN Configuration</span>
+				</div>
+				<div class="tablecontentbody">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please select a vlan id !" id="novlanchecked" />
+				<input type="hidden" value="Please select input valid Querier Interval(2-300) !" id="querierintervalerr" />
+				<input type="hidden" value="Please select input valid Maximum Response Time(1-25) !" id="mrterr" />
+				<input type="hidden" value="Please select input valid Last Member Query Interval(1-5) !" id="lmqierr" />
+				<input type="hidden" value="Please select input valid Snooping Querier SIP(xxx.xxx.xxx.xxx) !" id="sqserr" />
+				
+				
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+	RouterStart(2,function(){
+		IGMPQuerierVLANConfiguration();
+	});
+	</script>
+</html>

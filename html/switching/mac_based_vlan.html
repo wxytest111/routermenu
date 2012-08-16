@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+		<div class="ifmcontent">
+			<h3 class="wd400">Switching >> VLAN >> MAC Based VLAN</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>MAC Based VLAN Entry Add</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+						<tr>
+							<td class="ftbold wd120">MAC Address&nbsp;&nbsp;<input type=text size=15 value="" id="add_mac_address"/></td>
+							<td class="ftbold wd120">VLAN ID &nbsp;&nbsp;<input type=text size=8 value="" id="add_vlan_id"/></td>
+							<td class="wd80 btnarea"><input type='button' id="btn_add" value="Add" class="middebtn"/></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontenthead ">
+					<span>Search MAC Based VLAN Table</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+						<tr>
+							<td class="ftbold wd180">Searched By&nbsp;&nbsp;<select id="search_type"><option value=""></option><option value="vlan_id">VLAN ID</option><option value="mac_address">MAC Address</option></select>&nbsp;&nbsp;<input type=text size=15 value="" id="search_value"/></td>
+							<td class="wd180 btnarea"><input type='button' id="btn_search" value="Go" class="middebtn"/>&nbsp;&nbsp;&nbsp;<input type='button' id="btn_all" value="All" class="middebtn"/></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontenthead ">
+					<span>MAC Based VLAN Table</span>
+				</div>
+				<div class="tablecontentbody mgtop10"></div>
+				<div class="tablecontentfoot"></div>
+			</div>
+		</div>
+	<input type="hidden" value="Please input valid unicast MAC address(H.H.H) and VLAN ID(1-4094)!" id="adderror" />
+	<input type="hidden" value="Please select search type!" id="searchnone" />
+	<input type="hidden" value="Please input valid searching VLAN ID(1-4094)!" id="searcherrorid" />
+	<input type="hidden" value="Please input valid unicast MAC address(H.H.H)!" id="searcherroraddress" />
+	<input type="hidden" value="Please select MAC VLAN entry in the table!" id="novlanchecked" />
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	macBasedVlan();
+});
+	
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SystemInformation</title>
+	<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent wd800">
+	<h3 class="wd600">Switching >> MAC Table >> Global MAC Settings</h3>
+	<div class="tablecontent wd600">
+		<div class="tablecontenthead wd600" ><span>Global MAC Settings</span></div>
+		<div class="tablecontentbody mgtop10 mgbtm10">
+		<table align="center"  cellspacing="1" cellpadding="1" class="noborder alignleft wd450 mgleft20" >
+			<tr><td class="ftbold">Aging Time &nbsp;&nbsp;&nbsp;&nbsp;<input id="ag_time" type="text"  maxlength="7" value="" size=12/>(10-1000000 secs)</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="time_apply" type="button" value="APPLY" class="middebtn" /></td></tr>
+			<tr style="line-height:50px;"><td class="ftbold">Global MAC Learning &nbsp;&nbsp;&nbsp;&nbsp; <select><option value="" ></option><option value="Enable">Enable</option><option value="Disable">Disable</option></select></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="learning_apply" type="button" value="APPLY" class="middebtn" /></td></tr>
+			
+		</table>
+		</div>
+		<div class="tablecontentfoot"></div>
+	</div>
+	<input type="hidden" id="timeerr" value="Please input valid Aging Time value!"/>
+	<input type="hidden" id="learningerr" value="Please select a Learning mode!"/>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+//就是fdb aging&learning页面
+
+RouterStart(2,function(){
+	globalMacSettings();
+});
+</script>
+
+</html>

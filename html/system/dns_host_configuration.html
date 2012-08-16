@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PortConfiguration</title>
+    <link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent">
+    <h3 class="wd600">System >> Management >> DNS >> DNS Host Configuration</h3>
+    <div class="tablecontent wd600">
+        <div class="tablecontenthead">
+            <span>DNS Server Add</span>
+        </div>
+        <div class="tablecontentbody">
+            <table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+                <tr>
+                    <td class="ftbold wd120">Host Name </td><td class="wd300"><input type=text size=40 value="" id="host_name"/></td>
+                </tr>
+                <tr>
+                    <td class="ftbold wd120">Host IP Address</td><td class="wd300"><input type=text size=20 maxlength="15" value="" id="host_ip"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tablecontenthead mgtop10">
+            <span>DNS Host Table</span>
+        </div>
+        <div class="tablecontentbody">
+        </div>
+        <div class="tablecontentfoot">
+            <input type="hidden" value="Please select a DNS Server!" id="novlanchecked" />
+            <input type="hidden" value="Please select input valid IP Address !" id="host_ip_err" />
+            <input type="hidden" value="Please select input valid Host Name !" id="host_name_err" />
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+    RouterStart(2,function(){
+        DNSHostConfiguration();
+    });
+</script>
+</html>

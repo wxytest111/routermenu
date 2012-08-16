@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd800">Switching >> MAC Table >> MAC Table</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>MAC Table</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft wd600 mgleft20 hgc30"  id="table1">
+						<tr>
+							<td class="wd90 ftbold">Filtered by</td>
+							<td class="wd90 ftbold">
+							<select><option value=""></option><option value="vlan">VLAN ID</option><option value="mac-address">MAC Address</option><option value="port">Port</option></select>
+							</td>
+							<td class="wd120 ftbold">
+							<input type="text" value="" size=16 />
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;<input id="pro_add" type="button" value="Go" class="middebtn" />
+								&nbsp;&nbsp;&nbsp;<input id="pro_clear" type="button" value="Clear" class="middebtn" />
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablenormaltext mgtop10"><span>ST--Static&nbsp;&nbsp;&nbsp;&nbsp;BH--Blackhole&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DY--Dynamic</span></div>
+				<div class="tablecontentbody">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please select a filter!" id="filtertype" />
+				<input type="hidden" value="pls choose ID!" id="iderror" />
+				<input type="hidden" value="Please input a valid port!" id="porterror" />
+				<input type="hidden" value="Please input a valid unicast MAC address(H.H.H)!" id="addresserror" />
+				<input type="hidden" value="Please input a valid VLAN ID(1-4094)!" id="viderror" />
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/template" id="confirm_tips">
+This will clear MAC address <%= variable %>, are you sure?
+</script>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+
+RouterStart(2,function(){
+	macTable();
+});
+
+</script>
+</html>

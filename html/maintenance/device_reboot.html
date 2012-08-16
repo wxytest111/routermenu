@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PortConfiguration</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3>Maintenance >> Reset >> Device Reboot</h3>
+			<div class="tablecontent wd1024">
+				<div class="tablecontenthead">
+					<span>Device Reboot</span>
+				</div>
+				<div class="tablecontentbody mgtop20">
+					<table border="0"  cellspacing="1"
+						cellpadding="1" class="noborder alignleft wd500 mgleft20" id="table1">
+						<tr>
+							<td class="wd400 ftbold">Check this box and click APPLY below to reboot the device.</td>
+							<td><input type="checkbox" id="reboot_check" /></td>
+						</tr>
+						
+					</table>
+				</div>
+				<div class="tablecontentfoot mgtop10">
+				<input type='hidden' id="nocheck_tips" value="Please check the checkbox after the text above." />
+				<input type='hidden' id="tips" value="Are you sure to reboot the device?" />
+				
+				</div>
+			</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+	RouterStart(2,function(){
+		deviceReboot();
+	})
+	
+	</script>
+</html>

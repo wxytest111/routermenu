@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<igmp-table-list>
+<r>
+	<vid>1</vid>
+	<grp-mac>0100.5e00.0001</grp-mac>
+	<grp-ip>224.0.1.1</grp-ip>
+	<router-ports>1/2,1/3</router-ports>
+	<member-ports>1/5,1/6</member-ports>
+</r>
+<r>
+	<vid>1</vid>
+	<grp-mac>0100.5e00.0002</grp-mac>
+	<grp-ip>224.0.1.2</grp-ip>
+	<router-ports>1/2,1/3</router-ports>
+	<member-ports>1/10,1/16</member-ports>
+</r>
+<r>
+	<vid>2</vid>
+	<grp-mac>0100.5e00.0005</grp-mac>
+	<grp-ip>224.0.2.5</grp-ip>
+	<router-ports>1/2,1/3</router-ports>
+	<member-ports>1/7,1/8</member-ports>
+</r>
+
+</igmp-table-list>

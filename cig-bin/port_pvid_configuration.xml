@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<port-pvid-list>
+ <port>
+ <id>1/1</id>
+ <pvid>1</pvid>
+ <mac-based>Enable</mac-based>
+ <protocol-based>Disable</protocol-based>
+ </port>
+ <port>
+ <id>1/2</id>
+ <pvid>1</pvid>
+ <mac-based>Enable</mac-based>
+ <protocol-based>Disable</protocol-based>
+ </port>
+<port>
+ <id>1/3</id>
+ <pvid>1</pvid>
+ <mac-based>Disable</mac-based>
+ <protocol-based>Disable</protocol-based>
+ </port>
+</port-pvid-list>

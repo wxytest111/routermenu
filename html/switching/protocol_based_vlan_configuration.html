@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AddressTable</title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+		<div class="ifmcontent">
+			<h3 class="wd600">Switching >> VLAN >> Protocol Based VLAN Configuration</h3>
+			<div class="tablecontent wd800">
+				<div class="tablecontenthead ">
+					<span>Protocol Based VLAN Configuration</span>
+				</div>
+				<div class="tablecontentbody mgtop10 mgbtm10">
+					<table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+						<tr>
+							<td class="ftbold wd120">Port ID</td><td class="wd80"><select id="port_id"><option value="1/1">1/1</option><option value="1/2">1/2</option><option value="1/3">1/3</option><option value="1/4">1/4</option><option value="1/5">1/5</option><option value="1/6">1/6</option><option value="1/7">1/7</option><option value="1/8">1/8</option><option value="1/9">1/9</option><option value="1/10">1/10</option><option value="1/11">1/11</option><option value="1/12">1/12</option><option value="1/13">1/13</option><option value="1/14">1/14</option><option value="1/15">1/15</option><option value="1/16">1/16</option><option value="1/17">1/17</option><option value="1/18">1/18</option><option value="1/19">1/19</option><option value="1/20">1/20</option><option value="1/21">1/21</option><option value="1/22">1/22</option><option value="1/23">1/23</option><option value="1/24">1/24</option></select></td>
+							<td class="wd80 btnarea" colspan=4></td>
+						</tr>
+						<tr>
+							<td class="ftbold wd120">VLAN ID</td><td class="wd80"><input type=text size=8 value="" id="vlan_id"/></td>
+							<td class="ftbold wd120">Profile ID</td><td class="wd80"><select id="profile_id"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select></td>
+							<td class="wd80 btnarea"><input type='button' id="btn_add" value="Apply" class="middebtn"/></td>
+						</tr>
+					</table>
+				</div>
+				<div class="tablecontentbody mgtop10"></div>
+				<div class="tablecontentfoot"></div>
+			</div>
+		</div>
+	<input type="hidden" value="Please input a valid VLAN ID(1-4094)!" id="adderror" />
+	<input type="hidden" value="Please select an entry in the table!" id="novlanchecked" />
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+RouterStart(2,function(){
+	protocolBasedVlanConfiguration();
+});
+	
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="xinyu" />
+<title></title>
+<link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+	<div class="ifmcontent">
+		<h3 class="wd946">Switching >> STP >> STP Port Configuration</h3>
+			<div class="tablecontent wd946">
+				<div class="tablecontenthead ">
+					<span>STP Port Configuration</span>
+				</div>
+				<div class="tablecontentbody mgtop10">
+				</div>
+				<div class="tablecontentfoot">
+				<input type="hidden" value="Please input valid Port Priority(0-240) which can be divided by 16!" id="port_priority_error" />
+				<input type="hidden" value="Please input valid Port Cost(0-20000000)!" id="port_cost_error" />
+				<input type="hidden" value="Please select a port!" id="novlanchecked" />
+				<input type="hidden" value="This may cause the STP calculation which will take a period of time, are you sure?" id="confirm_tips" />
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+
+
+RouterStart(2,function(){
+	STPPortConfiguration();
+});
+
+</script>
+</html>
