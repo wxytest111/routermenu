@@ -18,7 +18,7 @@ git push
 echo '>> git commit end!'
 
 echo '3. export code to delivercode:'
-rm -fr ~/delivercode/routermenu
+rm -fr ~/delivercode/routermenu*
 git clone git@github.com:wxytest111/routermenu.git ~/delivercode/routermenu
 echo '>> export code succeed!'
 
