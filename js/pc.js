@@ -801,7 +801,6 @@ function portPvidConfiguration(){
 				o.data.push($.trim(port.find('mac-based').text()));
 				o.data.push($.trim(port.find('protocol-based').text()));
 				port_data.body.push(o);
-
 			});
 		
 		var tb=new PM.checkTable(port_data,$('div.tablecontentbody')[0]);
@@ -3359,4 +3358,105 @@ function lacpPortConfigruation() {
                 ]);
         });
 
+}
+
+function LAGGroupTable(){
+    var url=RouterConfig.lag_group_table+'dispatch=show lag-group-table';
+    url+='&r='+Math.random();
+
+    HE.ajax({
+        url:url,
+        method:'get',
+        useXml:true
+    },function(result){
+        grepResult(result);
+        var port_data = {
+            check : true,
+            pageable:true,
+            head : [ {
+                value : '',
+                type : "checkbox",
+                id:'allcheck',
+                cls : 'wd15'
+            }, {
+                value : 'Group ID',
+                type : 'nochangetext',
+                cls : 'wd80'
+            }, {
+                value : 'LAG Mode',
+                type : 'nochangetext',
+                cls : 'wd90'
+            },{
+                value : 'Loadsharing Type',
+                type : 'nochangetext',
+                cls : 'wd90'
+            },{
+                value : 'Selected Port(s)',
+                type : 'nochangetext',
+                cls : 'wd90'
+            },{
+                value : 'Unselected Port(s)',
+                type : 'nochangetext',
+                cls : 'wd90'
+
+            },{
+                value:'',
+                type:'nochangetext',
+                cls:'wd90'
+            }
+            ]
+        };
+        port_data.body =[];
+        var btnarr=[];
+        if($(result).find('grp').length>0){
+            $(result).find('grp').each(function(){
+                var port=$(this);
+                var o={};
+                o.id=$.trim(port.find('grp-id').text());
+                o.data=[];
+                o.data.push(o.id);
+                o.data.push($.trim(port.find('mod').text()));
+                o.data.push($.trim(port.find('loadsharing-type').text()));
+                o.data.push($.trim(port.find('sel-port-list').text()));
+                o.data.push($.trim(port.find('unsel-port-list').text()));
+                port_data.body.push(o);
+
+                o.data.push('<input type="button" value="Modify" onclick="ModifyLAG('+o.id+');" />');
+                port_data.body.push(o);
+            });
+
+        }
+        var tablecnt=$('div.tablecontentbody')[0];
+        var tb=new PM.checkTable(port_data,tablecnt);
+
+        btnarr.push(
+            {id:'REFRESH',func:function(){if($(this).attr('disabled'))return;window.location.reload();}},
+            {id:"DELETE",func:function(){
+                if($(this).attr('disabled'))return;
+
+                var checklist=tb.getChecklist();
+                var list=[];
+                $.each(checklist,function(){
+                    if($(this).attr('checked')=='checked'){
+                        list.push($(this).parent().parent().attr('_id'));
+                    }
+                });
+                if(list.length==0){
+                    alert($('#novlanchecked').val());
+                    return;
+                }
+                var url=RouterConfig.lag_group_table;
+                url=PM.setPara(url,'dispatch','del-lag');
+                url=PM.setPara(url,'group-list',list.join(','));
+                url=PM.setPara(url,'r',Math.random());
+
+                PM.disableButton();
+                $.ajax({url:url,dataType:'xml'}).done(function(res){
+                    manageResult(res);
+                });
+            }}
+        );
+
+        top.createButton(btnarr);
+    });
 }

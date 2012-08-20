@@ -176,7 +176,8 @@ var RouterConfig={
 	'dns_server_configuration':'/cig-bin/dns_server_configuration.xml?',
 	'dns_host_configuration':'/cig-bin/dns_host_configuration.xml?',
 	'lacp_configuration':'/cig-bin/lacp_configuration.xml?',
-    'lacp_port_configuration':'/cig-bin/LACP_Port_Configuration.xml?'
+    'lacp_port_configuration':'/cig-bin/LACP_Port_Configuration.xml?',
+    'lag_group_table':'/cig-bin/LAG_Group_Table.xml?'
 };
 RouterConfig.orgData = {
 		'System' : {
@@ -213,6 +214,7 @@ RouterConfig.orgData = {
 			'LAG' : {
 				'LAG Configuration' : '',
 				'LAG Membership' : '',
+				'LAG Group Table' : 'switching/lag_group_table.html',
 				'LACP Configuration' : 'switching/lacp_configuration.html',
 				'LACP Port Configuration' : 'switching/lacp_port_configuration.html'
 			},

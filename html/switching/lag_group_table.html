@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AddressTable</title>
+    <link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent">
+    <h3 class="wd400">Switching >> LAG >> LAG Group Table</h3>
+    <div class="tablecontent wd800">
+        <div class="tablecontenthead ">
+            <span>LAG Group Table</span>
+        </div>
+        <div class="tablecontentbody mgtop10"></div>
+        <div class="tablecontentfoot"></div>
+    </div>
+</div>
+<input type="hidden" value="Please select a Group  in the table!" id="novlanchecked" />
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+    function ModifyLAG(id){
+        top.changeMenu('LAG Configuration');
+        window.location.href="lag_configuration.html?group_id="+id;
+    }
+
+    RouterStart(2,function(){
+        LAGGroupTable();
+    });
+
+</script>
+</html>
