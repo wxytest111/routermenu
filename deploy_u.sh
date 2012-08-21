@@ -24,7 +24,7 @@ echo '>> export code succeed!'
 
 echo '4. delete excess code:'
 basepath=~/delivercode/routermenu/
-delfiles=(README.md .git comp.bat deploy.sh *.html robots.txt yuicompressor-2.4.6.jar css/r.css js/jquery-1.7.2.min.js js/index_o.js js/backbone-min.js js/lib.js js/backbone.js js/index.js js/os.js js/pc.js js/underscore-min.js)
+delfiles=(README.md .git comp.bat deploy* *.html robots.txt yuicompressor-2.4.6.jar css/r.css js/jquery-1.7.2.min.js js/index_o.js js/backbone-min.js js/lib.js js/backbone.js js/index.js js/os.js js/pc.js js/underscore-min.js)
 for tmp in ${delfiles[@]}
 do
 file=$basepath$tmp
