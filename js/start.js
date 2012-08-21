@@ -177,7 +177,8 @@ var RouterConfig={
 	'dns_host_configuration':'/cig-bin/dns_host_configuration.xml?',
 	'lacp_configuration':'/cig-bin/lacp_configuration.xml?',
     'lacp_port_configuration':'/cig-bin/LACP_Port_Configuration.xml?',
-    'lag_group_table':'/cig-bin/LAG_Group_Table.xml?'
+    'lag_group_table':'/cig-bin/LAG_Group_Table.xml?',
+    'advanced_shaping_configuration':'/cig-bin/Advanced_shaping_configuration.xml?'
 };
 RouterConfig.orgData = {
 		'System' : {
@@ -251,7 +252,10 @@ RouterConfig.orgData = {
 				'IGMP Querier VLAN Configuration' : 'switching/igmp_querier_vlan_configuration.html',
 				'IGMP Snooping Configuration' : 'switching/igmp_snooping_configuration.html',
                 'IGMP Snooping Table':'switching/igmp_snooping_table.html'
-			}
+			},
+            'QoS':{
+                'Advanced Shaping Configuration':'switching/advanced_shaping_configuration.html'
+            }
 		},
 		
 		'Security' : {

@@ -3460,3 +3460,147 @@ function LAGGroupTable(){
         top.createButton(btnarr);
     });
 }
+
+
+function advancedShapingConfiguration(){
+
+    $.ajax({
+        url:RouterConfig.advanced_shaping_configuration+'dispatch=show-port-shaping-config&r='+Math.random(),
+        type:'GET',
+        dataType:'xml'
+    }).done(function(result){
+            grepResult(result);
+            var port_data = {
+                editable:true,
+                check : true,
+                head : [{
+                    value : '',
+                    type : "checkbox",
+                    id:'allcheck',
+                    cls : 'wd15'
+                },{
+                    value : 'Port',
+                    type : 'nochangetext',
+                    cls : 'wd54'
+                },{
+                    value : 'Port Shaping(64-1000000)',
+                    type : 'text',
+                    id:'port-shaping',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue1 (0=auto)',
+                    type : 'text',
+                    id:'q1',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue2 (0=auto)',
+                    type : 'text',
+                    id:'q2',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue3 (0=auto)',
+                    type : 'text',
+                    id:'q3',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue4 (0=auto)',
+                    type : 'text',
+                    id:'q4',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue5 (0=auto)',
+                    type : 'text',
+                    id:'q5',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue6 (0=auto)',
+                    type : 'text',
+                    id:'q6',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue7 (0=auto)',
+                    type : 'text',
+                    id:'q7',
+                    cls : 'wd90'
+                },{
+                    value : 'Queue8 (0=auto)',
+                    type : 'text',
+                    id:'q8',
+                    cls : 'wd90'
+                }
+                ],
+                body : [
+                ]
+            };
+
+            $(result).find('r').each(function(){
+                var port=$(this);
+                var o={};
+                o.id=$.trim(port.find('port-id').text());
+                o.data=[];
+                o.data.push(o.id);
+                o.data.push($.trim(port.find('port-shaping').text()));
+                for(var i=1;i<=8;i++){
+                    o.data.push($.trim(port.find('q'+i).text()));
+                }
+
+                port_data.body.push(o);
+            });
+
+            var tb=new PM.checkTable(port_data,$('div.tablecontentbody')[0]);
+
+            top.createButton([
+                {id:'REFRESH',func:function(){if($(this).attr('disabled'))return;window.location.reload();}},
+                {id:"APPLY",func:function(){
+                    if($(this).attr('disabled'))return;
+
+                    var checklist=tb.getChecklist();
+                    var list=[];
+                    $.each(checklist,function(){
+                        if($(this).attr('checked')=='checked'){
+                            list.push($(this).parent().parent().attr('_id'));
+                        }
+                    });
+                    if(list.length==0){
+                        alert($('#novlanchecked').val());
+                        return;
+                    }
+
+                    if($('#port-shaping').val()!=''&&!PM.checkRange2($('#port-shaping').val(),64,1000000)){
+                        alert($('#shapingerr').val());
+                        return;
+                    }
+
+                    for(var i=1;i<=8;i++){
+                        if($('#q'+i).val()!=''&&$('#q'+i).val()!='0'&&!PM.checkRange2($('#q'+i).val(),64,1000000)){
+                            alert("Please input valid Queue"+i+" Number!");
+                            return;
+                        }
+                    }
+
+                    var url=RouterConfig.advanced_shaping_configuration;
+                    url=PM.setPara(url,'dispatch','qos-shaping-cfg');
+                    url=PM.setPara(url,'port-list',list.join(','));
+
+                    if($('#port-shaping').val()!=''){
+                        url=PM.setPara(url,'port-shaping',$('#port-shaping').val());
+                    }
+                    for(var i=1;i<=8;i++){
+                        if($('#q'+i).val()!=''){
+                            url=PM.setPara(url,'q'+i,$('#q'+i).val());
+                        }
+                    }
+
+                    url=PM.setPara(url,'r',Math.random());
+
+                    PM.disableButton();
+                    $.ajax({url:url,dataType:'xml'}).done(function(res){
+                        manageResult(res);
+                    });
+                }}]);
+
+        });
+
+}
+
+
