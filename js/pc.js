@@ -3604,3 +3604,62 @@ function advancedShapingConfiguration(){
 }
 
 
+function LAGConfiguration(){
+    var group_id=PM.getPara(location.href,'group_id');
+    $('#group_id').val(group_id);
+    $('#group_id').change(function(){
+        if($(this).val()!=''){
+            var url=location.href;
+            url=PM.setPara(url,'group_id',$(this).val());
+            url=PM.setPara(url,'r',Math.random());
+            location.href=url;
+        }
+    });
+    if(group_id!=''){
+        $.ajax({
+            url:RouterConfig.lag_configuration+'dispatch=show lag '+group_id+'&r='+Math.random(),
+            type:'GET',
+            dataType:'xml'
+        }).done(function(res){
+                grepResult(res);
+                $("#lag_mode").val($.trim($(res).find('mod').text()));
+                var member_ports= $.trim($(res).find('port-list').text());
+                var not_ports=[];
+                for(var i=1;i<=RouterConfig.portnum;i++){
+                    if(member_ports.indexOf('1/'+i)<0)
+                        not_ports.push('1/'+i);
+                }
+                new PM.generateRadioRows({table:{
+                    head:'Ports',
+                    have_all:true,
+                    number:RouterConfig.portnum,
+                    rows:{'Member':member_ports,'Not Member':not_ports.join(',')},
+                    textinput:{'Member':'member_ports_text'}
+                }},$('div.tablecontentbody')[1]);
+                var btnarr=[{id:'REFRESH',func:function(){if($(this).attr('disabled'))return;window.location.reload();}},
+                    {id:"APPLY",func:function(){
+                        if($(this).attr('disabled'))return;
+                        if($('#group_id').val()==''){
+                            alert($('#no_group_err').val());
+                            return;
+                        }
+                        var url=RouterConfig.lag_configuration;
+                        url=PM.setPara(url,'dispatch','cfg-lag');
+                        url=PM.setPara(url,'group',$('#group_id').val());
+                        if($('#lag_mode').val()!='')
+                            url=PM.setPara(url,'mode',$('#lag_mode').val());
+                        url=PM.setPara(url,'load','SIP');
+                        url=PM.setPara(url,'port-list',$('#member_ports_text').val());
+
+                        PM.disableButton();
+                        $.ajax({url:url,dataType:'xml'}).done(function(res){
+                            manageResult(res);
+                        });
+                    }}];
+                top.createButton(btnarr);
+            })
+    }
+
+}
+
+

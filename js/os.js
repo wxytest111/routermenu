@@ -1203,6 +1203,98 @@ PortIsolation.prototype={
 $extend(PortIsolation.prototype,PortMirror.prototype,true);
 
 
+PM.generateRadioRows=PM.create();
+PM.generateRadioRows.prototype={
+    initialize:function(param,cnt,textinput){
+        if(typeof param =='string')param=$.parseJSON(param);
+        this.param=param||{};
+        this.param.table=this.param.table||{};
+        this.param.events=this.param.events||{};
+        this.textinput=this.param.table.textinput;
+        if(!cnt){
+            return;
+        }
+        this.cnt=cnt;
+
+        this.createTable();
+    },
+    createTable:function(){
+        this.table=$('<table border="0" cellspacing="1" cellpadding="1" class="noborder mgleft20 raidos" ><thead></thead><tbody></tbody></table>');
+        this.createHead();
+        this.createRows();
+        this.setValues();
+        this.bindEvents();
+        this.table.appendTo($(this.cnt));
+    },
+    createHead:function(){
+        var tr=$('<tr class="firstalignleft"></tr>');
+        var thead=this.table.find('thead');
+        $('<td class="ftbold wd54">'+this.param.table.head+'</td>').appendTo(tr);
+        if(this.param.table.have_all){
+            $('<th class="wd54">All</th>').appendTo(tr);
+        }
+        for(var i=1;i<=this.param.table.number;i++){
+            $('<th class="wd25">'+i+'</th>').appendTo(tr);
+        }
+        tr.appendTo(thead);
+    },
+    createRows:function(){
+        if(this.param.table.rows){
+            var tbody= this.table.find('tbody');
+            var count=0;
+            for(var name in this.param.table.rows){
+                var tr=$('<tr class="firstalignleft  '+(count++%2==0?'oddrows':'')+'"></tr>');
+                $('<td class="ftbold wd54">'+name+'</td>').appendTo(tr);
+                if(this.param.table.have_all){
+                    $('<th class="wd54"><input type="button" value="All" id="'+ $.trim(name)+'_all"></th>').appendTo(tr);
+                }
+                for(var i=1;i<=this.param.table.number;i++){
+                    $('<th class="wd25"><input type="radio" class="taArr3" onfocus="this.blur();" name="radios'+i+'" value="'+ $.trim(name)+'_1/'+i+'"></th>').appendTo(tr);
+                }
+                tr.appendTo(tbody);
+            }
+        }
+    },
+    setValues:function(){
+        for(var name in this.param.table.rows){
+            var arr =  this.param.table.rows[name];
+            if(arr.length>0){
+                var arrs=arr.split(',');
+                for(var i=0;i<arrs.length;i++){
+                    this.table.find('input[type=radio][value="'+ $.trim(name)+'_'+arrs[i]+'"]').attr('checked',true);
+                }
+            }
+        }
+        this.setText();
+    },
+    bindEvents:function(){
+        var _this=this;
+        this.table.find('input[type=button]').click(function(){
+            $(this).parent().parent().find('input[type=radio]').attr('checked',true);
+            _this.setText();
+        });
+        this.table.find('input[type=radio]').change(function(){
+            _this.setText();
+        });
+
+    },
+    setText:function(){
+        console.log(this.textinput)
+        for(var name in this.param.table.rows){
+            var text=[];
+            if(this.textinput&&this.textinput[name]){
+                console.log(this.textinput[name])
+                this.table.find('input[type=radio][value^="'+ $.trim(name)+'"]').each(function(){
+                    if(this.checked){
+                        text.push($(this).val().split('_')[1]);
+                    }
+                });
+                $('#'+ $.trim(this.textinput[name])).val(text.join(',')) ;
+            }
+        }
+    }
+};
+
 var Dialog = PM.create();
 
 Dialog.prototype = {
