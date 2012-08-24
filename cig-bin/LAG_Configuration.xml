@@ -1,0 +1,5 @@
+<lag-cfg>
+<grp-id>1</grp-id>
+<mod>Manual</mod>
+<port-list>1/2,1/3</port-list>
+</lag-cfg>

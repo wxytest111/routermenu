@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AddressTable</title>
+    <link rel="stylesheet" href="../../css/proxy.css" type="text/css" />
+</head>
+<body>
+<div class="ifmcontent">
+    <h3 class="wd600">Switching >> LAG >> LAG Configuration</h3>
+    <div class="tablecontent wd946">
+        <div class="tablecontenthead ">
+            <span>LAG Configuration</span>
+        </div>
+        <div class="tablecontentbody mgtop10 mgbtm10">
+            <table border="0" cellspacing="1" cellpadding="1" class="noborder alignleft mgleft20 wd600" >
+                <tr>
+                    <td class="ftbold wd120">Group ID</td>
+                    <td class="wd80">
+                        <select id="group_id">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </td>
+                    <td class="ftbold wd120">LAG Mode</td>
+                    <td>
+                        <select id="lag_mode">
+                            <option value=""></option>
+                            <option value="Manual">Manual</option>
+                            <option value="Static LACP">Static LACP</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="tablecontentbody mgtop10"></div>
+        <div class="tablecontentfoot mgtop10"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../js/start.js"></script>
+<script type="text/javascript">
+
+    function LAGConfiguration(){
+        var group_id=PM.getPara(location.href,'group_id');
+        $('#group_id').val(group_id);
+        $('#group_id').change(function(){
+          if($(this).val()!=''){
+            var url=location.href;
+            url=PM.setPara(url,'group_id',$(this).val());
+            url=PM.setPara(url,'r',Math.random());
+            location.href=url;
+          }
+        });
+        if(group_id!=''){
+            $.ajax({
+                url:RouterConfig.lag_configuration+'dispatch=show lag '+group_id+'&r='+Math.random(),
+                type:'GET',
+                dataType:'xml'
+            }).done(function(res){
+                grepResult(res);
+                $("#lag_mode").val($.trim($(res).find('mod').text()));
+                new PM.generateRadioRows({table:{
+                    head:'Ports',
+                    have_all:true,
+                    number:RouterConfig.portnum,
+                    rows:['Member','Not Member']
+                }},$('div.tablecontentbody')[1]);
+                var btnarr=[{id:'REFRESH',func:function(){if($(this).attr('disabled'))return;window.location.reload();}}];
+                top.createButton(btnarr);
+            })
+        }
+
+    }
+    RouterStart(2,function(){
+        PM.generateRadioRows=PM.create();
+        PM.generateRadioRows.prototype={
+            initialize:function(param,cnt,textinput){
+                if(typeof param =='string')param=$.parseJSON(param);
+                this.param=param||{};
+                this.param.table=this.param.table||{};
+                this.param.events=this.param.events||{};
+                if(!cnt){
+                    return;
+                }
+                this.cnt=cnt;
+                if(!textinput){
+                   this.textinput=$('<input type="hidden" value="" />') ;
+                   this.textinput.appendTo($(body));
+                }else{
+                    this.textinput=textinput;
+                }
+
+                this.createTable();
+            },
+            createTable:function(){
+                this.table=$('<table border="0" cellspacing="1" cellpadding="1" class="noborder mgleft20 raidos" ><thead></thead><tbody></tbody></table>');
+                this.createHead();
+                this.createRows();
+                this.setValues();
+                this.bindEvents();
+                this.table.appendTo($(this.cnt));
+            },
+            createHead:function(){
+                var tr=$('<tr class="firstalignleft"></tr>');
+                var thead=this.table.find('thead');
+                $('<td class="ftbold wd54">'+this.param.table.head+'</td>').appendTo(tr);
+                if(this.param.table.have_all){
+                    $('<th class="wd54">All</th>').appendTo(tr);
+                }
+                for(var i=1;i<=this.param.table.number;i++){
+                   $('<th class="wd25">'+i+'</th>').appendTo(tr);
+                }
+                tr.appendTo(thead);
+            },
+            createRows:function(){
+               if(this.param.table.rows&&this.param.table.rows.length>0){
+                   var tbody= this.table.find('tbody');
+                   for(var j=0;j<this.param.table.rows.length;j++){
+                       var name= this.param.table.rows[j];
+                       var tr=$('<tr class="firstalignleft  '+(j%2==0?'oddrows':'')+'"></tr>');
+                       $('<td class="ftbold wd54">'+name+'</td>').appendTo(tr);
+                       if(this.param.table.have_all){
+                         $('<th class="wd54"><input type="button" value="All" id="'+ $.trim(name)+'_all"></th>').appendTo(tr);
+                       }
+                       for(var i=1;i<=this.param.table.number;i++){
+                         $('<th class="wd25"><input type="radio" class="taArr3" name="radios'+i+'" value="'+name+'_1"></th>').appendTo(tr);
+                       }
+                       tr.appendTo(tbody);
+                   }
+               }
+            },
+            setValues:function(){
+
+            },
+            bindEvents:function(){
+                var _this=this;
+                this.table.find('input[type=button]').click(function(){
+                    $(this).parent().parent().find('input[type=radio]').attr('checked',true);
+                    _this.setText();
+                });
+            },
+            setText:function(){
+               if(this.textinput){
+                   this.textinput();
+               }
+            }
+        };
+        LAGConfiguration();
+    });
+
+</script>
+</html>

@@ -895,6 +895,8 @@ a:hover, a:active
 	width:100%;
 
 }
+
+
 table
 {
 	width:100%;
@@ -907,7 +909,20 @@ table
 	line-height:22px;
 }
 
+.tablecontentbody .raidos{
+    width:93%;
+    border:2px solid white;
+}
+.tablecontentbody .raidos td,.tablecontentbody .raidos th{
+    text-align:center;
+    border:1px solid #fff;
+}
 
+.tablecontentbody .raidos .firstalignleft td
+{
+    text-align:left;
+    padding-left:8px;
+}
 
 .tablecontentbody table thead{
 	background-color:#036;

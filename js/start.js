@@ -178,6 +178,7 @@ var RouterConfig={
 	'lacp_configuration':'/cig-bin/lacp_configuration.xml?',
     'lacp_port_configuration':'/cig-bin/LACP_Port_Configuration.xml?',
     'lag_group_table':'/cig-bin/LAG_Group_Table.xml?',
+    'lag_configuration':'/cig-bin/LAG_Configuration.xml?',
     'advanced_shaping_configuration':'/cig-bin/Advanced_shaping_configuration.xml?'
 };
 RouterConfig.orgData = {
@@ -213,7 +214,7 @@ RouterConfig.orgData = {
 				'Jumbo Frame':'switching/jumbo_frame.html'
 			},
 			'LAG' : {
-				'LAG Configuration' : '',
+				'LAG Configuration' : 'switching/lag_configuration.html',
 				'LAG Membership' : '',
 				'LAG Group Table' : 'switching/lag_group_table.html',
 				'LACP Configuration' : 'switching/lacp_configuration.html',
