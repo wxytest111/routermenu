@@ -41,6 +41,7 @@
             </table>
         </div>
         <div class="tablecontentbody mgtop10"></div>
+        <div class="tablecontentbody mgtop10"></div>
         <div class="tablecontentfoot mgtop10"></div>
     </div>
 </div>
@@ -71,7 +72,8 @@
                     head:'Ports',
                     have_all:true,
                     number:RouterConfig.portnum,
-                    rows:['Member','Not Member']
+                    rows:{'Member':'1/2,1/3','Not Member':''},
+                    textinput:{'Member':'Member Ports'}
                 }},$('div.tablecontentbody')[1]);
                 var btnarr=[{id:'REFRESH',func:function(){if($(this).attr('disabled'))return;window.location.reload();}}];
                 top.createButton(btnarr);
@@ -91,12 +93,6 @@
                     return;
                 }
                 this.cnt=cnt;
-                if(!textinput){
-                   this.textinput=$('<input type="hidden" value="" />') ;
-                   this.textinput.appendTo($(body));
-                }else{
-                    this.textinput=textinput;
-                }
 
                 this.createTable();
             },
@@ -121,24 +117,32 @@
                 tr.appendTo(thead);
             },
             createRows:function(){
-               if(this.param.table.rows&&this.param.table.rows.length>0){
+               if(this.param.table.rows){
                    var tbody= this.table.find('tbody');
-                   for(var j=0;j<this.param.table.rows.length;j++){
-                       var name= this.param.table.rows[j];
-                       var tr=$('<tr class="firstalignleft  '+(j%2==0?'oddrows':'')+'"></tr>');
+                   var count=0;
+                   for(var name in this.param.table.rows){
+                       var tr=$('<tr class="firstalignleft  '+(count++%2==0?'oddrows':'')+'"></tr>');
                        $('<td class="ftbold wd54">'+name+'</td>').appendTo(tr);
                        if(this.param.table.have_all){
                          $('<th class="wd54"><input type="button" value="All" id="'+ $.trim(name)+'_all"></th>').appendTo(tr);
                        }
                        for(var i=1;i<=this.param.table.number;i++){
-                         $('<th class="wd25"><input type="radio" class="taArr3" name="radios'+i+'" value="'+name+'_1"></th>').appendTo(tr);
+                         $('<th class="wd25"><input type="radio" class="taArr3" name="radios'+i+'" value="'+ $.trim(name)+'_1/'+i+'"></th>').appendTo(tr);
                        }
                        tr.appendTo(tbody);
                    }
                }
             },
             setValues:function(){
-
+               for(var name in this.param.table.rows){
+                 var arr =  this.param.table.rows[name];
+                   if(arr.length>0){
+                     var arrs=arr.split(',');
+                     for(var i=0;i<arrs.length;i++){
+                         this.table.find('input[type=radio][value="'+ $.trim(name)+'_'+arrs[i]+'"]').attr('checked',true);
+                     }
+                   }
+               }
             },
             bindEvents:function(){
                 var _this=this;
@@ -149,7 +153,16 @@
             },
             setText:function(){
                if(this.textinput){
-                   this.textinput();
+                   for(var name in this.param.table.rows){
+                       var text='';
+                       if(this.textinput[name]){
+                            this.table.find('input[type=radio][value="'+ $.trim(name)+'*"]').each(function(){
+                               if(this.checked){
+
+                               }
+                            })
+                       }
+                   }
                }
             }
         };
